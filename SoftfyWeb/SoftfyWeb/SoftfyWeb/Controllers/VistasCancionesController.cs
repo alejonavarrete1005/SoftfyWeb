@@ -50,15 +50,24 @@ namespace SoftfyWeb.Controllers
         public async Task<IActionResult> Index()
         {
             HttpClient client = ObtenerCliente();
-            HttpResponseMessage response = await client.GetAsync("canciones/canciones");
+            HttpResponseMessage response = await client.GetAsync("canciones/canciones"); // Solicita todas las canciones
             if (!response.IsSuccessStatusCode)
                 return View("Error", CrearErrorModel());
 
             var json = await response.Content.ReadAsStringAsync();
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var lista = JsonSerializer.Deserialize<List<CancionRespuestaDto>>(json, opciones);
+
+            // Asegurarse de que la URL del archivo esté correctamente formada
+            foreach (var cancion in lista)
+            {
+                var nombreArchivo = Path.GetFileName(cancion.UrlArchivo);
+                cancion.UrlArchivo = $"https://localhost:7003/api/canciones/reproducir/{nombreArchivo}";
+            }
+
             return View(lista);
         }
+
 
         // 2) Listar mis canciones (solo Artista)
         // --- MisCanciones (ARTISTA sólo) ---
