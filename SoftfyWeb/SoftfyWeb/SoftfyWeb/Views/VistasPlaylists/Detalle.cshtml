@@ -1,62 +1,48 @@
-﻿@model IEnumerable<SoftfyWeb.Modelos.Dtos.PlaylistCancionDto>
+﻿@model List<PlaylistCancionDto>
+@using SoftfyWeb.Modelos.Dtos
 
-<h2>Detalle de la Playlist</h2>
+@{
+    ViewData["Title"] = "Detalle de Playlist";
+}
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Archivo</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var c in Model)
-        {
-            <tr>
-                <td>@c.Titulo</td>
-                <td>
-                    <!-- Reproductor de audio con la URL correcta -->
-                    <audio controls>
-                        <source src="@c.UrlArchivo" type="audio/mpeg" />
-                    </audio>
-                </td>
-                <td>
-                    <form asp-action="QuitarCancion" method="post">
-                        <input type="hidden" name="playlistId" value="@ViewBag.PlaylistId" />
-                        <input type="hidden" name="cancionId" value="@c.Id" />
-                        <button type="submit" class="btn btn-sm btn-danger">Quitar</button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h2>Detalle de Playlist</h2>
 
-<h4>Agregar canción al álbum</h4>
-<form asp-action="AgregarCancion" method="post" class="row g-2">
-    @Html.AntiForgeryToken() <!-- Token anti-forgery -->
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
 
+<!-- Form para agregar una nueva canción -->
+<form asp-action="AgregarCancion" method="post" class="mb-4">
+    @Html.AntiForgeryToken()
     <input type="hidden" name="playlistId" value="@ViewBag.PlaylistId" />
 
-    <div class="col-auto">
-        <select name="cancionId" class="form-control">
-            <option value="">-- Selecciona una canción --</option>
-            @if (ViewBag.CancionesArtista != null && ViewBag.CancionesArtista.Count > 0)
+    <div class="form-inline">
+        <label class="mr-2" for="cancionId">Selecciona canción:</label>
+        <select name="cancionId" class="form-control mr-2" required>
+            <option value="">-- Elige una --</option>
+            @foreach (var c in ViewBag.CancionesArtista as List<CancionDto>)
             {
-                foreach (var cancion in ViewBag.CancionesArtista)
-                {
-                    <option value="@cancion.Id">@cancion.Titulo</option>  <!-- Mostrar solo canciones subidas por el artista -->
-                }
-            }
-            else
-            {
-                <option value="">No hay canciones disponibles</option>
+                <option value="@c.Id">@c.Titulo</option>
             }
         </select>
-    </div>
-
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Agregar</button>
+        <button type="submit" class="btn btn-primary">Agregar</button>
     </div>
 </form>
+
+<hr />
+
+<h4>Canciones en esta playlist</h4>
+<ul class="list-group">
+    @foreach (var c in Model)
+    {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>@c.Titulo</strong>
+            </div>
+            <a href="@c.UrlArchivo" target="_blank" class="btn btn-sm btn-outline-secondary">
+                ▶️ Reproducir
+            </a>
+        </li>
+    }
+</ul>

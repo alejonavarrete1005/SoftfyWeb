@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj": {}
+    "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj": {
+    "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj",
+        "projectUniqueName": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj",
         "projectName": "Softfy.API",
-        "projectPath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj",
+        "projectPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj",
         "packagesPath": "C:\\Users\\soft\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\obj\\",
+        "outputPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj": {
-                "projectPath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj"
+              "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj": {
+                "projectPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj"
               }
             }
           }
@@ -122,14 +122,14 @@
         }
       }
     },
-    "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj": {
+    "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj",
+        "projectUniqueName": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj",
         "projectName": "SoftfyWeb.Modelos",
-        "projectPath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj",
+        "projectPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj",
         "packagesPath": "C:\\Users\\soft\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb.Modelos\\obj\\",
+        "outputPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "STfxDE1li0o=",
+  "dgSpecHash": "zYhCq5h6AIQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj",
+  "projectFilePath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Softfy.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\soft\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\soft\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

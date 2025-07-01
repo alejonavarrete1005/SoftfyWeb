@@ -23,3 +23,16 @@ C:\Users\soft\Documents\softfy\SoftfyWeb_backup\SoftfyWeb\SoftfyWeb.Modelos\obj\
 C:\Users\soft\Documents\softfy\SoftfyWeb_backup\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\refint\SoftfyWeb.Modelos.dll
 C:\Users\soft\Documents\softfy\SoftfyWeb_backup\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.pdb
 C:\Users\soft\Documents\softfy\SoftfyWeb_backup\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\ref\SoftfyWeb.Modelos.dll
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\bin\Debug\net8.0\SoftfyWeb.Modelos.deps.json
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\bin\Debug\net8.0\SoftfyWeb.Modelos.dll
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\bin\Debug\net8.0\SoftfyWeb.Modelos.pdb
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.csproj.AssemblyReference.cache
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.AssemblyInfoInputs.cache
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.AssemblyInfo.cs
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.csproj.CoreCompileInputs.cache
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.sourcelink.json
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.dll
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\refint\SoftfyWeb.Modelos.dll
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\SoftfyWeb.Modelos.pdb
+C:\Users\soft\Documents\Repositorios\proyecto.softfy\SoftfyWeb\SoftfyWeb\SoftfyWeb.Modelos\obj\Debug\net8.0\ref\SoftfyWeb.Modelos.dll
