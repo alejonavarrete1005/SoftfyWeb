@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SoftfyWeb
+build_property.RootNamespace = SoftfyWeb
+build_property.ProjectDir = C:\Users\soft\Documents\softfy\SoftfyWeb_backup\SoftfyWeb\SoftfyWeb\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\soft\Documents\softfy\SoftfyWeb_backup\SoftfyWeb\SoftfyWeb
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/Bienvenido.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxCaWVudmVuaWRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/BienvenidoArtista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxCaWVudmVuaWRvQXJ0aXN0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxDb25maXJtRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxSZWdpc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/RegistroArtista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxSZWdpc3Ryb0FydGlzdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasAuth/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasCanciones/CrearCancion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQ2FuY2lvbmVzXENyZWFyQ2FuY2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasCanciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQ2FuY2lvbmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasCanciones/MisCanciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQ2FuY2lvbmVzXE1pc0NhbmNpb25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasPlaylists/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzUGxheWxpc3RzXENyZWFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasPlaylists/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzUGxheWxpc3RzXERldGFsbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasPlaylists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzUGxheWxpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/VistasPlaylists/MeGusta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzUGxheWxpc3RzXE1lR3VzdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/softfy/SoftfyWeb_backup/SoftfyWeb/SoftfyWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-s07if6b5kw

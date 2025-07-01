@@ -1,0 +1,147 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\softfy\\softfyweb_backup\\softfyweb\\softfyweb\\controllers\\vistasplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\controllers\\vistasplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\softfy\\softfyweb_backup\\softfyweb\\softfyweb\\views\\vistasplaylists\\detalle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistasplaylists\\detalle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\softfy\\softfyweb_backup\\softfyweb\\softfyweb\\controllers\\vistascancionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\controllers\\vistascancionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\softfy\\softfyweb_backup\\softfyweb\\softfyweb\\views\\vistascanciones\\miscanciones.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistascanciones\\miscanciones.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|c:\\users\\soft\\documents\\softfy\\softfyweb_backup\\softfyweb\\softfy.api\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|solutionrelative:softfy.api\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|c:\\users\\soft\\documents\\softfy\\softfyweb_backup\\softfyweb\\softfy.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|solutionrelative:softfy.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ArtistasController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Controllers\\ArtistasController.cs",
+              "RelativeDocumentMoniker": "Softfy.API\\Controllers\\ArtistasController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Controllers\\ArtistasController.cs",
+              "RelativeToolTip": "Softfy.API\\Controllers\\ArtistasController.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAQwEkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T16:30:15.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MisCanciones.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Views\\VistasCanciones\\MisCanciones.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasCanciones\\MisCanciones.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Views\\VistasCanciones\\MisCanciones.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasCanciones\\MisCanciones.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-01T01:48:54.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VistasCancionesController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasCancionesController.cs",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasCancionesController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasCancionesController.cs",
+              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasCancionesController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAwFYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T01:37:35.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VistasPlaylistsController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
+              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAiwGMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T01:31:14.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Program.cs",
+              "RelativeDocumentMoniker": "Softfy.API\\Program.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\Softfy.API\\Program.cs",
+              "RelativeToolTip": "Softfy.API\\Program.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T01:29:52.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Detalle.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Views\\VistasPlaylists\\Detalle.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasPlaylists\\Detalle.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\softfy\\SoftfyWeb_backup\\SoftfyWeb\\SoftfyWeb\\Views\\VistasPlaylists\\Detalle.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasPlaylists\\Detalle.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-01T01:26:01.428Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1080,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
