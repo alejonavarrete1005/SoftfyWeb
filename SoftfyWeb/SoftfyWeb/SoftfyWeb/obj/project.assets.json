@@ -1029,23 +1029,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\soft\\.nuget\\packages\\": {},
+    "C:\\Users\\cdana\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.csproj",
+      "projectUniqueName": "C:\\Users\\cdana\\source\\repos\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.csproj",
       "projectName": "SoftfyWeb",
-      "projectPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.csproj",
-      "packagesPath": "C:\\Users\\soft\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\obj\\",
+      "projectPath": "C:\\Users\\cdana\\source\\repos\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.csproj",
+      "packagesPath": "C:\\Users\\cdana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cdana\\source\\repos\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\soft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cdana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1060,8 +1060,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj": {
-              "projectPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj"
+            "C:\\Users\\cdana\\source\\repos\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj": {
+              "projectPath": "C:\\Users\\cdana\\source\\repos\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj"
             }
           }
         }
@@ -1106,7 +1106,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
