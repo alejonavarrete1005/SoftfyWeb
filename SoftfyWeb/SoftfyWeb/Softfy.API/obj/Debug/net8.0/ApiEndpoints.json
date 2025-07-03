@@ -229,6 +229,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Softfy.API.Controllers.OyentesController",
+    "Method": "ObtenerMiPerfil",
+    "RelativePath": "api/Oyentes/mi-perfil",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SoftfyWeb.Controllers.PlanesController",
     "Method": "ObtenerPlanes",
     "RelativePath": "api/Planes",

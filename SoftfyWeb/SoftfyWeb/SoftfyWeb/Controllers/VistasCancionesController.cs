@@ -58,7 +58,7 @@ namespace SoftfyWeb.Controllers
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var lista = JsonSerializer.Deserialize<List<CancionRespuestaDto>>(json, opciones);
 
-            // Asegurarse de que la URL del archivo esté correctamente formada
+            // Asegurarse de que la URL del archivo esté correctamente formadaAdd commentMore actions
             foreach (var cancion in lista)
             {
                 var nombreArchivo = Path.GetFileName(cancion.UrlArchivo);

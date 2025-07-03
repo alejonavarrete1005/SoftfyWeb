@@ -192,7 +192,7 @@ namespace SoftfyWeb.Controllers
             return View("Error", CrearErrorModel());
         }
 
-        [Authorize(Roles = "OyentePremium,Artista")]
+        [Authorize(Roles = "OyentePremium,Oyente")]
         public async Task<IActionResult> MeGusta()
         {
             var client = ObtenerClienteConToken();
