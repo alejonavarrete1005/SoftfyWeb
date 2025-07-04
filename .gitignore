@@ -1,0 +1,19 @@
+# Archivos y carpetas comunes a ignorar en Visual Studio
+
+# Archivos de configuración del entorno
+.vs/
+*.user
+*.suo
+
+# Archivos de build
+bin/
+obj/
+*.log
+
+# Archivos temporales
+*.vsidx
+*.db
+*.cache
+
+# Configuración de paquetes
+packages/

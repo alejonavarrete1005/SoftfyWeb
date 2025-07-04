@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Todas las Playlists";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -38,7 +38,7 @@
                 <a class="nav-link" data-bs-toggle="collapse" href="#playlistMenu">
                     <i class="fas fa-list"></i> Playlist <i class="fas fa-plus-circle small-icon"></i>
                 </a>
-                <div class="collapse" id="playlistMenu">
+                <div class="collapse show" id="playlistMenu">
                     <ul class="nav flex-column ms-3">
                         <li>
                             <a class="nav-link" asp-controller="VistaPlaylists" asp-action="Index">
@@ -75,8 +75,8 @@
         </header>
 
         <section>
-            <h1>Home</h1>
-            <p>Suggestions for you</p>
+            <h1>All Playlists</h1>
+            <p>Browse all available playlists</p>
         </section>
     </main>
 </div>

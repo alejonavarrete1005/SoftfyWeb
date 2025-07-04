@@ -799,7 +799,6 @@ C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\n
 C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\Softfy.API.csproj.CoreCompileInputs.cache
 C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\Softfy.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\Softfy.API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\Softfy.API.sourcelink.json
 C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\scopedcss\bundle\Softfy.API.styles.css
 C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\cdana\Source\Repos\SoftfyWeb\SoftfyWeb\SoftfyWeb\Softfy.API\obj\Debug\net8.0\staticwebassets.build.json.cache

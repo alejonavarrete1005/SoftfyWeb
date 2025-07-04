@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Álbumes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,15 +11,13 @@
 
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" asp-controller="VistaHome" asp-action="Index">
-                    <i class="fas fa-home"></i> Home
-                </a>
+                <a class="nav-link" asp-controller="VistaHome" asp-action="Index"><i class="fas fa-home"></i> Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#libraryMenu">
                     <i class="fas fa-folder"></i> Library
                 </a>
-                <div class="collapse" id="libraryMenu">
+                <div class="collapse show" id="libraryMenu">
                     <ul class="nav flex-column ms-3">
                         <li>
                             <a class="nav-link" asp-controller="VistaArtistas" asp-action="Index">
@@ -40,16 +38,8 @@
                 </a>
                 <div class="collapse" id="playlistMenu">
                     <ul class="nav flex-column ms-3">
-                        <li>
-                            <a class="nav-link" asp-controller="VistaPlaylists" asp-action="Index">
-                                <i class="fas fa-list-ul"></i> All playlists
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link" asp-controller="VistaPlaylists" asp-action="MiPlaylist">
-                                <i class="fas fa-music"></i> My playlist
-                            </a>
-                        </li>
+                        <li><a class="nav-link" href="#"><i class="fas fa-list-ul"></i> All playlists</a></li>
+                        <li><a class="nav-link" href="#"><i class="fas fa-music"></i> My playlist</a></li>
                     </ul>
                 </div>
             </li>
@@ -75,8 +65,8 @@
         </header>
 
         <section>
-            <h1>Home</h1>
-            <p>Suggestions for you</p>
+            <h1>Albums</h1>
+            <p>List of albums...</p>
         </section>
     </main>
 </div>
