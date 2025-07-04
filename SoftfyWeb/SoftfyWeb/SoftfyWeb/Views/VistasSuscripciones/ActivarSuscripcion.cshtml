@@ -1,0 +1,25 @@
+﻿@model List<SoftfyWeb.Modelos.Dtos.PlanDto>  
+
+@{
+    ViewData["Title"] = "Activar Suscripción";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h3>Selecciona un plan para activar tu suscripción</h3>
+
+    <form method="post" action="@Url.Action("ActivarSuscripcion", "VistasSuscripciones")">
+        <div class="form-group">
+            <label for="planId">Selecciona un plan:</label>
+            <select id="planId" name="planId" class="form-control" required>
+                <option value="">Selecciona un plan</option>
+                @foreach (var plan in Model)
+                {
+                    <option value="@plan.Id">@plan.Nombre - $@plan.Precio</option> <!-- Mostrar nombre y precio -->
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Activar Suscripción</button>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+﻿@model SoftfyWeb.Modelos.Dtos.SuscripcionEstadoDto
+
+@{
+    ViewData["Title"] = "Estado de la Suscripción";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h3>Detalles de tu suscripción</h3>
+
+    @if (Model.Tipo == "Free")
+    {
+        <p>No tienes una suscripción activa. Si deseas activar una, selecciona un plan.</p>
+        <a href="@Url.Action("ActivarSuscripcion", "VistasSuscripciones")" class="btn btn-primary">Activar Suscripción</a>
+    }
+    else
+    {
+        <p><strong>Tipo de Suscripción:</strong> @Model.Tipo</p>
+        <p><strong>Plan:</strong> @Model.Plan</p>
+        <p><strong>Precio:</strong> @Model.Precio</p>
+        <p><strong>Fecha de Inicio:</strong> @Model.FechaInicio</p>
+        <p><strong>Fecha de Fin:</strong> @Model.FechaFin</p>
+        <p><strong>¿Eres el titular?:</strong> @(Model.EsTitular ? "Sí" : "No")</p>
+
+        @if (Model.EsTitular)
+        {
+            <h4>Gestionar Miembros</h4>
+            <form method="post" action="@Url.Action("AgregarMiembro", "VistasSuscripciones")">
+                <label for="email">Correo electrónico del miembro a agregar:</label>
+                <input type="email" id="email" name="email" class="form-control" required />
+                <button type="submit" class="btn btn-success">Agregar Miembro</button>
+            </form>
+
+            <form method="post" action="@Url.Action("EliminarMiembro", "VistasSuscripciones")">
+                <label for="emailEliminar">Correo electrónico del miembro a eliminar:</label>
+                <input type="email" id="emailEliminar" name="email" class="form-control" required />
+                <button type="submit" class="btn btn-danger">Eliminar Miembro</button>
+            </form>
+
+            <form method="post" action="@Url.Action("SalirDeSuscripcion", "VistasSuscripciones")">
+                <button type="submit" class="btn btn-warning">Salir de la Suscripción</button>
+            </form>
+        }
+    }
+</div>

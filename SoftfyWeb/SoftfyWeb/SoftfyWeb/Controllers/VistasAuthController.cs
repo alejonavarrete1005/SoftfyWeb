@@ -280,11 +280,11 @@ namespace SoftfyWeb.Controllers
             // Obtener todas las canciones del sistema desde la API usando el endpoint proporcionado
             var clientCanciones = ObtenerClienteConToken();
             var respCanciones = await clientCanciones.GetAsync("https://localhost:7003/api/Canciones/canciones"); // Endpoint correcto
-            var todasCanciones = new List<CancionDto>();
+            var todasCanciones = new List<CancionRespuestaDto>();
             if (respCanciones.IsSuccessStatusCode)
             {
                 var rawCanciones = await respCanciones.Content.ReadAsStringAsync();
-                todasCanciones = JsonSerializer.Deserialize<List<CancionDto>>(rawCanciones,
+                todasCanciones = JsonSerializer.Deserialize<List<CancionRespuestaDto>>(rawCanciones,
                     new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                 // Asegurarse de que la URL del archivo esté correctamente formada
