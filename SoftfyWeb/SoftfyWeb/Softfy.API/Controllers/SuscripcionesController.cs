@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using SoftfyWeb.Data;
 using SoftfyWeb.Dtos;
 using SoftfyWeb.Modelos;
+using SoftfyWeb.Modelos.Dtos;
 
 namespace SoftfyWeb.Controllers
 {
@@ -202,6 +203,71 @@ namespace SoftfyWeb.Controllers
             await _userManager.AddToRoleAsync(usuario, "Oyente");
 
             return Ok(new { mensaje = "Has salido de la suscripción correctamente" });
+        }
+
+        // Cancelar suscripción completa (solo titular)
+        [Authorize(Roles = "OyentePremium")]
+        [HttpPost("cancelar")]
+        public async Task<IActionResult> CancelarSuscripcion()
+        {
+            var titular = await _userManager.GetUserAsync(User);
+
+            // Buscar suscripción del titular incluyendo sus miembros
+            var suscripcion = await _context.Suscripciones
+                .Include(s => s.Miembros)
+                .FirstOrDefaultAsync(s => s.UsuarioPrincipalId == titular.Id);
+
+            if (suscripcion == null)
+                return BadRequest(new { mensaje = "No tienes una suscripción activa que cancelar." });
+
+            // Para cada miembro (incluyendo al titular), revertir roles
+            var miembros = suscripcion.Miembros.ToList();
+            foreach (var miembro in miembros)
+            {
+                var usuario = await _userManager.FindByIdAsync(miembro.UsuarioId);
+                if (usuario != null)
+                {
+                    // Eliminar rol Premium y añadir rol Oyente
+                    await _userManager.RemoveFromRoleAsync(usuario, "OyentePremium");
+                    await _userManager.AddToRoleAsync(usuario, "Oyente");
+                }
+            }
+
+            // Eliminar todos los registros de MiembrosSuscripcion
+            _context.MiembrosSuscripciones.RemoveRange(miembros);
+            // Eliminar la suscripción
+            _context.Suscripciones.Remove(suscripcion);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { mensaje = "Suscripción cancelada y roles revertidos correctamente." });
+        }
+
+        [Authorize]
+        [HttpGet("miembros")]
+        public async Task<IActionResult> GetMiembros()
+        {
+            var usuario = await _userManager.GetUserAsync(User);
+
+            // Buscar la suscripción (sea titular o miembro)
+            var suscripcion = await _context.Suscripciones
+                .Include(s => s.Miembros)
+                    .ThenInclude(m => m.Usuario)
+                .FirstOrDefaultAsync(s => s.UsuarioPrincipalId == usuario.Id
+                                       || s.Miembros.Any(m => m.UsuarioId == usuario.Id));
+
+            if (suscripcion == null)
+                return BadRequest(new { mensaje = "No perteneces a ninguna suscripción activa" });
+
+            var miembros = suscripcion.Miembros
+                .Select(m => new MiembroDto
+                {
+                    Email = m.Usuario.Email,
+                    FechaAgregado = m.FechaAgregado,
+                    EsTitular = m.UsuarioId == suscripcion.UsuarioPrincipalId
+                })
+                .ToList();
+
+            return Ok(miembros);
         }
 
 

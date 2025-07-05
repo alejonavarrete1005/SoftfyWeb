@@ -856,6 +856,30 @@
         }
       }
     },
+    "/api/Suscripciones/cancelar": {
+      "post": {
+        "tags": [
+          "Suscripciones"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Suscripciones/miembros": {
+      "get": {
+        "tags": [
+          "Suscripciones"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [

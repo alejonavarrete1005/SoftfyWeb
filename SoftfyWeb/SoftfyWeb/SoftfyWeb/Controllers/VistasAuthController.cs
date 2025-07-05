@@ -28,10 +28,10 @@ namespace SoftfyWeb.Controllers
         private HttpClient ObtenerClienteConToken()
         {
             var client = _httpClientFactory.CreateClient("SoftfyApi");
-            var token = Request.Cookies["jwt_token"];
-            if (!string.IsNullOrEmpty(token))
+            var jwt = User.FindFirst("jwt")?.Value;
+            if (!string.IsNullOrEmpty(jwt))
                 client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", token);
+                    new AuthenticationHeaderValue("Bearer", jwt);
             return client;
         }
 
@@ -91,8 +91,8 @@ namespace SoftfyWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
+            // Cierra la sesión en la cookie 'auth_cookie'
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            Response.Cookies.Delete("jwt_token");
             return RedirectToAction(nameof(Login));
         }
 
@@ -133,6 +133,9 @@ namespace SoftfyWeb.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home"); 
+
             ViewBag.ReturnUrl = returnUrl;
             ViewBag.Info = TempData["RegistroOk"];
             return View(new UsuarioLoginDto());
@@ -142,59 +145,34 @@ namespace SoftfyWeb.Controllers
         public async Task<IActionResult> Login(UsuarioLoginDto dto, string returnUrl = null)
         {
             var client = _httpClientFactory.CreateClient();
-            var resp = await client.PostAsync(
-                "https://localhost:7003/api/auth/login",
-                new StringContent(JsonSerializer.Serialize(dto), Encoding.UTF8, "application/json")
-            );
+            var resp = await client.PostAsJsonAsync("https://localhost:7003/api/auth/login", dto);
             var raw = await resp.Content.ReadAsStringAsync();
 
             if (!resp.IsSuccessStatusCode)
             {
-                try
-                {
-                    using var doc = JsonDocument.Parse(raw);
-                    var root = doc.RootElement;
-                    if (root.TryGetProperty("error", out var error) &&
-                        error.GetString().Contains("confirmar tu correo"))
-                    {
-                        ViewBag.Error = "Debes confirmar tu correo antes de iniciar sesión.";
-                    }
-                    else if (root.TryGetProperty("error", out error) &&
-                             error.GetString().Contains("bloqueada"))
-                    {
-                        ViewBag.Error = "Tu cuenta está bloqueada. Intenta nuevamente después de 1 minuto.";
-                    }
-                    else
-                    {
-                        ViewBag.Error = "Credenciales inválidas.";
-                    }
-                }
-                catch (JsonException)
-                {
-                    ViewBag.Error = raw;
-                }
+                ViewBag.Error = "Credenciales inválidas.";
                 return View(dto);
             }
-
             var token = JsonDocument.Parse(raw)
                                    .RootElement
                                    .GetProperty("token")
                                    .GetString();
 
-            Response.Cookies.Append("jwt_token", token, new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTimeOffset.UtcNow.AddHours(2)
-            });
-
+            // 1) Parseamos el JWT y extraemos sus claims
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadJwtToken(token);
-            var role = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 
-            var identity = new ClaimsIdentity(jwtToken.Claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            // 2) Construimos la identidad con esquema de cookies
+            var identity = new ClaimsIdentity(
+                jwtToken.Claims,
+                CookieAuthenticationDefaults.AuthenticationScheme
+            );
+            // Guardamos el raw JWT como claim para usarlo luego en HttpClient
+            identity.AddClaim(new Claim("jwt", token));
+
             var principal = new ClaimsPrincipal(identity);
+
+            // 3) Firmamos al usuario: el middleware creará/actualizará 'auth_cookie'
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 principal,
@@ -204,7 +182,9 @@ namespace SoftfyWeb.Controllers
                     IsPersistent = false
                 }
             );
-
+            var role = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                return Redirect(returnUrl);
             if (role == "Artista")
                 return RedirectToAction(nameof(BienvenidoArtista));
             if (role == "Oyente")
@@ -212,6 +192,7 @@ namespace SoftfyWeb.Controllers
 
             return RedirectToAction(nameof(Bienvenido));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string userId, string token)

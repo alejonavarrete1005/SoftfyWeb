@@ -498,6 +498,16 @@
   },
   {
     "ContainingType": "SoftfyWeb.Controllers.SuscripcionesController",
+    "Method": "CancelarSuscripcion",
+    "RelativePath": "api/Suscripciones/cancelar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.SuscripcionesController",
     "Method": "EliminarMiembro",
     "RelativePath": "api/Suscripciones/eliminar-miembro",
     "HttpMethod": "DELETE",
@@ -516,6 +526,16 @@
     "ContainingType": "SoftfyWeb.Controllers.SuscripcionesController",
     "Method": "Estado",
     "RelativePath": "api/Suscripciones/estado",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.SuscripcionesController",
+    "Method": "GetMiembros",
+    "RelativePath": "api/Suscripciones/miembros",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -1,17 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SoftfyWeb.Dtos;
 using SoftfyWeb.Modelos.Dtos;
 using SoftfyWeb.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
+using System.Net.Http.Json;
+using System.Security.Claims;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace SoftfyWeb.Controllers
 {
@@ -28,16 +26,11 @@ namespace SoftfyWeb.Controllers
         private HttpClient ObtenerClienteConToken()
         {
             var client = _httpClientFactory.CreateClient("SoftfyApi");
-            var token = Request.Cookies["jwt_token"];
-            if (!string.IsNullOrEmpty(token))
-                client.DefaultRequestHeaders.Authorization
-                      = new AuthenticationHeaderValue("Bearer", token);
+            var jwt = User.FindFirst("jwt")?.Value;
+            if (!string.IsNullOrEmpty(jwt))
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", jwt);
             return client;
-        }
-
-        private HttpClient ObtenerCliente()
-        {
-            return _httpClientFactory.CreateClient("SoftfyApi");
         }
 
         private ErrorViewModel CrearErrorModel()
@@ -45,127 +38,164 @@ namespace SoftfyWeb.Controllers
             string id = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             return new ErrorViewModel { RequestId = id };
         }
-        public async Task<IActionResult> Estado()
+
+        // Reutilizable: carga estado y miembros
+        private async Task<SuscripcionEstadoDto> CargarEstadoYMiembrosAsync()
         {
-            HttpClient client = ObtenerClienteConToken();
-            HttpResponseMessage response = await client.GetAsync("suscripciones/estado"); // Solicita el estado de la suscripción
-            if (!response.IsSuccessStatusCode)
-                return View("Error", CrearErrorModel());
+            var client = ObtenerClienteConToken();
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            var json = await response.Content.ReadAsStringAsync();
-            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var estadoSuscripcion = JsonSerializer.Deserialize<SuscripcionEstadoDto>(json, opciones);
+            // Trae estado
+            var estado = await client.GetFromJsonAsync<SuscripcionEstadoDto>("suscripciones/estado");
+            if (estado == null)
+                return null;
 
-            return View(estadoSuscripcion);
+            // Si es Premium, trae miembros
+            if (estado.Tipo == "Premium")
+            {
+                var miembros = await client.GetFromJsonAsync<List<MiembroDto>>("suscripciones/miembros");
+                estado.Miembros = miembros ?? new List<MiembroDto>();
+            }
+            return estado;
         }
 
+        // GET: /VistasSuscripciones/Index
+        public IActionResult Index() => RedirectToAction(nameof(Estado));
+
+        // GET: /VistasSuscripciones/Estado
+        public async Task<IActionResult> Estado()
+        {
+            var model = await CargarEstadoYMiembrosAsync();
+            if (model == null)
+                return View("Error", CrearErrorModel());
+
+            // Extrae el email del usuario actual (fallback a Name si no hubiera claim)
+            var currentEmail = User.FindFirstValue(ClaimTypes.Email)
+                               ?? User.Identity.Name;
+            ViewBag.CurrentEmail = currentEmail;
+
+            return View(model);
+        }
+
+        // GET: /VistasSuscripciones/ActivarSuscripcion
         [HttpGet]
         public async Task<IActionResult> ActivarSuscripcion()
         {
-            // Obtener los planes desde la API
-            HttpClient client = ObtenerClienteConToken();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7003/api/Planes");
+            var client = ObtenerClienteConToken();
+            var response = await client.GetAsync("planes");
             if (!response.IsSuccessStatusCode)
                 return View("Error", CrearErrorModel());
 
-            var json = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(json); // Para depuración, ver el JSON recibido
-            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var planes = JsonSerializer.Deserialize<List<PlanDto>>(json, opciones);
-
-            // Asegurarse de que los datos se deserializan correctamente
-            if (planes == null || !planes.Any())
-            {
-                return View("Error", CrearErrorModel());  // Si no hay datos, muestra el error
-            }
-            return View(planes);
+            var planes = await response.Content.ReadFromJsonAsync<List<PlanDto>>();
+            return View(planes ?? new List<PlanDto>());
         }
 
+        // POST: /VistasSuscripciones/ActivarSuscripcion
         [HttpPost]
         public async Task<IActionResult> ActivarSuscripcion(int planId)
         {
-            Console.WriteLine("Plan seleccionado: " + planId);  // Para verificar que se recibe correctamente
-
             var client = ObtenerClienteConToken();
-
-            // Crear el contenido de la solicitud con el valor de planId como un simple valor entero (texto plano)
-            var content = new StringContent(planId.ToString(), Encoding.UTF8, "text/plain");
-
-            // Enviar la solicitud POST con el planId
-            var response = await client.PostAsync("suscripciones/activar", content);
-
-            // Verificar el estado de la respuesta
+            var response = await client.PostAsJsonAsync("suscripciones/activar", planId);
             if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine("Error al activar la suscripción. Código de estado: " + response.StatusCode);
                 return View("Error", CrearErrorModel());
-            }
 
-            var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<RespuestaDto>(json);
-
-            // Verificar el resultado
-            Console.WriteLine("Resultado de la activación: " + json);
-
-            return RedirectToAction("Estado");
+            // 2) Forzamos relogin limpiando la cookie protegida
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["Info"] = "Suscripción activada. Por favor, inicia sesión de nuevo para actualizar tus permisos.";
+            return RedirectToAction("Login", "VistasAuth");
         }
 
-
-
-
-        // 3) Agregar miembro a la suscripción (solo para el titular de la suscripción)
+        // POST: /VistasSuscripciones/AgregarMiembro
         [HttpPost]
         public async Task<IActionResult> AgregarMiembro(string email)
         {
             var client = ObtenerClienteConToken();
-            var response = await client.PostAsync("suscripciones/agregar-miembro", new StringContent(email));
+            var dto = new AgregarMiembroDto { Email = email };
+            var response = await client.PostAsJsonAsync("suscripciones/agregar-miembro", dto);
+
             if (!response.IsSuccessStatusCode)
-                return View("Error", CrearErrorModel());
+            {
+                var errorJson = await response.Content.ReadAsStringAsync();
+                var mensaje = "Error al agregar miembro";
+                try
+                {
+                    using var doc = JsonDocument.Parse(errorJson);
+                    mensaje = doc.RootElement.GetProperty("mensaje").GetString() ?? mensaje;
+                }
+                catch { }
 
-            var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<RespuestaDto>(json);
-
-            // Redirigir al estado de la suscripción después de agregar el miembro
-            return RedirectToAction("Estado");
+                var model = await CargarEstadoYMiembrosAsync();
+                ViewBag.ErrorMiembro = mensaje;
+                return View("Estado", model);
+            }
+            return RedirectToAction(nameof(Estado));
         }
 
-        // 4) Eliminar miembro de la suscripción (solo para el titular de la suscripción)
+        // POST: /VistasSuscripciones/EliminarMiembro
         [HttpPost]
         public async Task<IActionResult> EliminarMiembro(string email)
         {
             var client = ObtenerClienteConToken();
-            var response = await client.PostAsync("suscripciones/eliminar-miembro", new StringContent(email));
+            var dto = new EliminarMiembroDto { Email = email };
+            var request = new HttpRequestMessage(HttpMethod.Delete, new Uri(client.BaseAddress + "suscripciones/eliminar-miembro"))
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await client.SendAsync(request);
             if (!response.IsSuccessStatusCode)
-                return View("Error", CrearErrorModel());
+            {
+                var errorJson = await response.Content.ReadAsStringAsync();
+                var mensaje = "Error al eliminar miembro";
+                try
+                {
+                    using var doc = JsonDocument.Parse(errorJson);
+                    mensaje = doc.RootElement.GetProperty("mensaje").GetString() ?? mensaje;
+                }
+                catch { }
 
-            var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<RespuestaDto>(json);
-
-            // Redirigir al estado de la suscripción después de eliminar el miembro
-            return RedirectToAction("Estado");
+                var model = await CargarEstadoYMiembrosAsync();
+                ViewBag.ErrorMiembro = mensaje;
+                return View("Estado", model);
+            }
+            return RedirectToAction(nameof(Estado));
         }
 
-        // 5) Salir de la suscripción (solo para miembros premium)
+        // POST: /VistasSuscripciones/SalirDeSuscripcion
         [HttpPost]
         public async Task<IActionResult> SalirDeSuscripcion()
         {
             var client = ObtenerClienteConToken();
-            var response = await client.PostAsync("suscripciones/salir-de-suscripcion", new StringContent(""));
-
+            var response = await client.PostAsync("suscripciones/salir-de-suscripcion", null);
             if (!response.IsSuccessStatusCode)
-                return View("Error", CrearErrorModel());
+            {
+                // ... manejar error ...
+                return View("Estado", await CargarEstadoYMiembrosAsync());
+            }
 
-            var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<RespuestaDto>(json);
-
-            // Redirigir a la vista de estado después de salir de la suscripción
-            return RedirectToAction("Estado");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["Info"] = "Suscripción cancelada. Por seguridad, inicia sesión de nuevo.";
+            return RedirectToAction("Login", "VistasAuth");
         }
 
-        [AllowAnonymous]
-        public IActionResult Error()
+        // GET: /VistasSuscripciones/CancelarSuscripcion
+        [HttpGet]
+        public IActionResult CancelarSuscripcion() => View();
+
+        // POST: /VistasSuscripciones/CancelarSuscripcion
+        [HttpPost, ActionName("CancelarSuscripcion")]
+        public async Task<IActionResult> ConfirmarCancelarSuscripcion()
         {
-            return View(CrearErrorModel());
+            var client = ObtenerClienteConToken();
+            var response = await client.PostAsync("suscripciones/cancelar", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                // ... manejar error ...
+                return View("Estado", await CargarEstadoYMiembrosAsync());
+            }
+
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["Info"] = "Suscripción cancelada. Por seguridad, inicia sesión de nuevo.";
+            return RedirectToAction("Login", "VistasAuth");
         }
     }
 }
