@@ -133,6 +133,35 @@ namespace SoftfyWeb.Controllers
             return Ok(canciones);
         }
 
+        [HttpGet("por-nombre/{nombre}")]
+        [AllowAnonymous]
+        public IActionResult ObtenerCancionesPorNombre(string nombre)
+        {
+            var canciones = _context.Canciones
+                .Where(c => c.Titulo.Contains(nombre))  // Filtra por el título que contenga el nombre dado
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Titulo,
+                    c.Genero,
+                    c.FechaLanzamiento,
+                    c.UrlArchivo,
+                    Artista = new
+                    {
+                        c.Artista.NombreArtistico,
+                        c.Artista.FotoUrl
+                    }
+                })
+                .ToList();
+
+            if (!canciones.Any())
+            {
+                return NotFound(new { mensaje = "No se encontraron canciones con ese nombre." });
+            }
+
+            return Ok(canciones);
+        }
+
 
     }
 }

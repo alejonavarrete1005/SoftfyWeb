@@ -27,10 +27,10 @@ namespace SoftfyWeb.Controllers
         private HttpClient ObtenerClienteConToken()
         {
             var client = _httpClientFactory.CreateClient("SoftfyApi");
-            var token = Request.Cookies["jwt_token"];
-            if (!string.IsNullOrEmpty(token))
-                client.DefaultRequestHeaders.Authorization
-                      = new AuthenticationHeaderValue("Bearer", token);
+            var jwt = User.FindFirst("jwt")?.Value;
+            if (!string.IsNullOrEmpty(jwt))
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", jwt);
             return client;
         }
 

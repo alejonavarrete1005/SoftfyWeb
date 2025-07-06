@@ -3,40 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfy.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|solutionrelative:softfy.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistasauth\\verperfiloyente.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistasauth\\verperfiloyente.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\controllers\\vistasauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\controllers\\vistasauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistassuscripciones\\estado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistassuscripciones\\estado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistasauth\\verperfilartista.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistasauth\\verperfilartista.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\controllers\\vistasplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\controllers\\vistasplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistasauth\\buscar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistasauth\\buscar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\controllers\\vistassuscripcionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\controllers\\vistassuscripcionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfy.api\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|solutionrelative:softfy.api\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ECCA581-25B8-434F-9FC2-006888207B5F}|SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb.modelos\\dtos\\suscripcionestadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ECCA581-25B8-434F-9FC2-006888207B5F}|SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj|solutionrelative:softfyweb.modelos\\dtos\\suscripcionestadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistassuscripciones\\cancelarsuscripcion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistassuscripciones\\cancelarsuscripcion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistassuscripciones\\activarsuscripcion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistassuscripciones\\activarsuscripcion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ECCA581-25B8-434F-9FC2-006888207B5F}|SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb.modelos\\dtos\\miembrodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ECCA581-25B8-434F-9FC2-006888207B5F}|SoftfyWeb.Modelos\\SoftfyWeb.Modelos.csproj|solutionrelative:softfyweb.modelos\\dtos\\miembrodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfy.api\\controllers\\oyentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FCE1F5B-659F-432A-AB8A-AD412127B869}|Softfy.API\\Softfy.API.csproj|solutionrelative:softfy.api\\controllers\\oyentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,125 +54,110 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "VistasPlaylistsController.cs",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
-              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasPlaylistsController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T21:41:01.664Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Program.cs",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Program.cs",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Program.cs",
-              "RelativeToolTip": "SoftfyWeb\\Program.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAuwBwAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T21:19:56.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VistasAuthController.cs",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasAuthController.cs",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasAuthController.cs",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasAuthController.cs*",
-              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasAuthController.cs*",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAmwIgAAAA2AAAAAAAAAA==",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Softfy.API\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Softfy.API\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T21:02:02.615Z",
+              "WhenOpened": "2025-07-06T01:18:31.449Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CancelarSuscripcion.cshtml",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasSuscripciones\\CancelarSuscripcion.cshtml",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasSuscripciones\\CancelarSuscripcion.cshtml",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasSuscripciones\\CancelarSuscripcion.cshtml",
-              "RelativeToolTip": "SoftfyWeb\\Views\\VistasSuscripciones\\CancelarSuscripcion.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-05T20:27:00.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ActivarSuscripcion.cshtml",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasSuscripciones\\ActivarSuscripcion.cshtml",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasSuscripciones\\ActivarSuscripcion.cshtml",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasSuscripciones\\ActivarSuscripcion.cshtml",
-              "RelativeToolTip": "SoftfyWeb\\Views\\VistasSuscripciones\\ActivarSuscripcion.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-05T20:26:03.179Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MiembroDto.cs",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\Dtos\\MiembroDto.cs",
-              "RelativeDocumentMoniker": "SoftfyWeb.Modelos\\Dtos\\MiembroDto.cs",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\Dtos\\MiembroDto.cs",
-              "RelativeToolTip": "SoftfyWeb.Modelos\\Dtos\\MiembroDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T20:14:48.035Z",
+              "WhenOpened": "2025-07-06T00:59:31.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SuscripcionEstadoDto.cs",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\Dtos\\SuscripcionEstadoDto.cs",
-              "RelativeDocumentMoniker": "SoftfyWeb.Modelos\\Dtos\\SuscripcionEstadoDto.cs",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb.Modelos\\Dtos\\SuscripcionEstadoDto.cs",
-              "RelativeToolTip": "SoftfyWeb.Modelos\\Dtos\\SuscripcionEstadoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T20:03:42.344Z",
+              "Title": "Buscar.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAswF8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-06T00:51:50.422Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Estado.cshtml",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasSuscripciones\\Estado.cshtml",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasSuscripciones\\Estado.cshtml",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasSuscripciones\\Estado.cshtml",
-              "RelativeToolTip": "SoftfyWeb\\Views\\VistasSuscripciones\\Estado.cshtml",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAuwE8AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "VerPerfilOyente.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\VerPerfilOyente.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasAuth\\VerPerfilOyente.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\VerPerfilOyente.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasAuth\\VerPerfilOyente.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-05T20:03:17.646Z",
+              "WhenOpened": "2025-07-06T00:47:26.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "VistasSuscripcionesController.cs",
-              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasSuscripcionesController.cs",
-              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasSuscripcionesController.cs",
-              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasSuscripcionesController.cs",
-              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasSuscripcionesController.cs",
-              "ViewState": "AgIAALQAAAAAAAAAAAAcwMYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T20:02:26.596Z",
+              "Title": "VerPerfilArtista.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\VerPerfilArtista.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasAuth\\VerPerfilArtista.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\VerPerfilArtista.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasAuth\\VerPerfilArtista.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-06T00:46:49.398Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VistasAuthController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "ViewState": "AgIAAHYBAAAAAAAAAAArwIwBAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T00:45:08.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OyentesController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Controllers\\OyentesController.cs",
+              "RelativeDocumentMoniker": "Softfy.API\\Controllers\\OyentesController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Controllers\\OyentesController.cs",
+              "RelativeToolTip": "Softfy.API\\Controllers\\OyentesController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T00:43:03.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ArtistasController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Controllers\\ArtistasController.cs",
+              "RelativeDocumentMoniker": "Softfy.API\\Controllers\\ArtistasController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\Softfy.API\\Controllers\\ArtistasController.cs",
+              "RelativeToolTip": "Softfy.API\\Controllers\\ArtistasController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAEkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T00:42:49.201Z"
             }
           ]
         },
         {
-          "DockedWidth": 1080,
+          "DockedWidth": 200,
           "SelectedChildIndex": -1,
           "Children": [
             {

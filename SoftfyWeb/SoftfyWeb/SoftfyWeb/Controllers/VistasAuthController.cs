@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using SoftfyWeb.Dtos;
 using SoftfyWeb.Modelos;
 using SoftfyWeb.Modelos.Dtos;
+using SoftfyWeb.Models;
 using System;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
@@ -33,6 +35,11 @@ namespace SoftfyWeb.Controllers
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("Bearer", jwt);
             return client;
+        }
+        private ErrorViewModel CrearErrorModel()
+        {
+            string id = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            return new ErrorViewModel { RequestId = id };
         }
 
         [HttpGet]
@@ -302,5 +309,177 @@ namespace SoftfyWeb.Controllers
             }
             catch { return false; }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Buscar(string termino)
+        {
+            if (string.IsNullOrWhiteSpace(termino))
+            {
+                ViewBag.Error = "Por favor, ingrese un término de búsqueda.";
+                return View();
+            }
+
+            var client = _httpClientFactory.CreateClient();
+
+            var cancionesResponse = await client.GetAsync($"https://localhost:7003/api/Canciones/por-nombre/{termino}");
+            var artistasResponse = await client.GetAsync($"https://localhost:7003/api/Artistas/perfil/{termino}");
+
+            // CANCIONES
+            if (cancionesResponse.IsSuccessStatusCode)
+            {
+                var cancionesJson = await cancionesResponse.Content.ReadAsStringAsync();
+                var canciones = JsonSerializer.Deserialize<List<CancionRespuestaDto>>(cancionesJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                if (canciones != null && canciones.Any())
+                {
+                    // Actualizar URL para el reproductor
+                    foreach (var cancion in canciones)
+                    {
+                        var nombreArchivo = Path.GetFileName(cancion.UrlArchivo);
+                        cancion.UrlArchivo = $"https://localhost:7003/api/canciones/reproducir/{nombreArchivo}";
+                    }
+
+                    ViewBag.Canciones = canciones;
+                }
+                else
+                {
+                    ViewBag.Error = "No se encontraron canciones.";
+                }
+            }
+
+            // ARTISTA
+            if (artistasResponse.IsSuccessStatusCode)
+            {
+                var artistasJson = await artistasResponse.Content.ReadAsStringAsync();
+                var artista = JsonSerializer.Deserialize<Artista>(artistasJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                if (artista != null)
+                {
+                    if (!string.IsNullOrEmpty(artista.FotoUrl))
+                    {
+                        artista.FotoUrl = $"https://localhost:7003/api/artistas/foto/{artista.FotoUrl}";
+                    }
+
+                    ViewBag.Artista = artista;
+                }
+                else
+                {
+                    ViewBag.Error = "No se encontró el artista.";
+                }
+            }
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> VerPerfil()
+        {
+            var client = ObtenerClienteConToken();
+            var rol = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+
+            if (rol == "Artista")
+            {
+                var response = await client.GetAsync("https://localhost:7003/api/Artistas/mi-perfil");
+                if (response.IsSuccessStatusCode)
+                {
+                    var raw = await response.Content.ReadAsStringAsync();
+                    var perfil = JsonSerializer.Deserialize<PerfilArtistaDto>(raw,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    if (perfil != null)
+                    {
+                        ViewBag.TipoUsuario = "Artista";
+                        ViewBag.NombreArtistico = perfil.NombreArtistico;
+                        ViewBag.FotoUrl = perfil.FotoUrl;
+                        ViewBag.Biografia = perfil.Biografia;
+                        ViewBag.Email = perfil.UsuarioEmail;
+                        return View("VerPerfilArtista");
+                    }
+                }
+            }
+
+            if (rol == "Oyente" || rol == "OyentePremium")
+            {
+                var response = await client.GetAsync("https://localhost:7003/api/Oyentes/mi-perfil");
+                if (response.IsSuccessStatusCode)
+                {
+                    var raw = await response.Content.ReadAsStringAsync();
+                    var perfil = JsonSerializer.Deserialize<PerfilOyenteDto>(raw,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    if (perfil != null)
+                    {
+                        ViewBag.TipoUsuario = perfil.TipoUsuario;
+                        ViewBag.Nombre = perfil.Nombre;
+                        ViewBag.Apellido = perfil.Apellido;
+                        return View("VerPerfilOyente");
+                    }
+                }
+            }
+
+            return NotFound("Perfil no encontrado.");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ActualizarPerfilArtista(string NombreArtistico, string Biografia, IFormFile Foto)
+        {
+            var client = ObtenerClienteConToken();
+
+            var form = new MultipartFormDataContent();
+            form.Add(new StringContent(NombreArtistico ?? ""), "nombreArtistico");
+            form.Add(new StringContent(Biografia ?? ""), "biografia");
+
+            if (Foto != null && Foto.Length > 0)
+            {
+                var streamContent = new StreamContent(Foto.OpenReadStream());
+                streamContent.Headers.ContentType = new MediaTypeHeaderValue(Foto.ContentType);
+                form.Add(streamContent, "foto", Foto.FileName);
+            }
+
+            var response = await client.PutAsync("https://localhost:7003/api/artistas/actualizar", form);
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Mensaje"] = "Perfil actualizado correctamente.";
+                return RedirectToAction("VerPerfil");
+            }
+
+            TempData["Error"] = "Error al actualizar perfil.";
+            return RedirectToAction("VerPerfil");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ActualizarPerfilOyente(string Nombre, string Apellido)
+        {
+            var client = ObtenerClienteConToken();
+
+            var jsonBody = new
+            {
+                nombre = Nombre,
+                apellido = Apellido
+            };
+
+            var content = new StringContent(JsonSerializer.Serialize(jsonBody), Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync("https://localhost:7003/api/oyentes/actualizar", content);
+            var respuestaTexto = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Mensaje"] = "Perfil actualizado correctamente.";
+                return RedirectToAction("VerPerfil");
+            }
+
+            TempData["Error"] = $"Error al actualizar perfil: {respuestaTexto}";
+            return RedirectToAction("VerPerfil");
+        }
+
+
+
+
+
     }
 }

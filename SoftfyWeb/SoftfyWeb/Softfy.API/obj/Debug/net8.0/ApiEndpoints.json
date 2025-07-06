@@ -37,12 +37,60 @@
   },
   {
     "ContainingType": "SoftfyWeb.Controllers.ArtistasController",
+    "Method": "ObtenerCancionesDelArtistaPorNombre",
+    "RelativePath": "api/Artistas/canciones/{nombre}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.ArtistasController",
+    "Method": "ObtenerFoto",
+    "RelativePath": "api/Artistas/foto/{nombreArchivo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombreArchivo",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.ArtistasController",
     "Method": "ObtenerMiPerfil",
     "RelativePath": "api/Artistas/mi-perfil",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.ArtistasController",
+    "Method": "ObtenerPerfilDelArtistaPorNombre",
+    "RelativePath": "api/Artistas/perfil/{nombre}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -214,6 +262,22 @@
   },
   {
     "ContainingType": "SoftfyWeb.Controllers.CancionesController",
+    "Method": "ObtenerCancionesPorNombre",
+    "RelativePath": "api/Canciones/por-nombre/{nombre}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.CancionesController",
     "Method": "ReproducirCancion",
     "RelativePath": "api/Canciones/reproducir/{nombreArchivo}",
     "HttpMethod": "GET",
@@ -223,6 +287,22 @@
       {
         "Name": "nombreArchivo",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Softfy.API.Controllers.OyentesController",
+    "Method": "ActualizarPerfil",
+    "RelativePath": "api/Oyentes/actualizar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "SoftfyWeb.Modelos.Dtos.PerfilOyenteDto",
         "IsRequired": true
       }
     ],

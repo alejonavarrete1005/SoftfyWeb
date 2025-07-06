@@ -90,5 +90,105 @@ namespace SoftfyWeb.Controllers
 
             return Ok(canciones); // Devuelve la lista de canciones del artista
         }
+        [Authorize(Roles = "Artista")]
+        [HttpPut("actualizar")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public async Task<IActionResult> ActualizarPerfil([FromForm] string nombreArtistico, [FromForm] string biografia, [FromForm] IFormFile? foto)
+        {
+            var email = User.Identity?.Name;
+
+            var artista = await _context.Artistas
+                .Include(a => a.Usuario)
+                .FirstOrDefaultAsync(a => a.Usuario.Email == email);
+
+            if (artista == null)
+                return NotFound("Artista no encontrado.");
+
+            // Actualizar campos básicos
+            artista.NombreArtistico = nombreArtistico;
+            artista.Biografia = biografia;
+
+            if (foto != null && foto.Length > 0)
+            {
+                var extension = Path.GetExtension(foto.FileName);
+                var nombreArchivo = $"{Guid.NewGuid()}{extension}";
+                var ruta = Path.Combine(Directory.GetCurrentDirectory(), "FotosArtistas", nombreArchivo);
+
+                using (var stream = new FileStream(ruta, FileMode.Create))
+                {
+                    await foto.CopyToAsync(stream);
+                }
+
+                artista.FotoUrl = nombreArchivo; // Solo guardamos el nombre del archivo
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok("Perfil actualizado correctamente.");
+        }
+
+        [AllowAnonymous]
+        [HttpGet("foto/{nombreArchivo}")]
+        public IActionResult ObtenerFoto(string nombreArchivo)
+        {
+            var ruta = Path.Combine(Directory.GetCurrentDirectory(), "FotosArtistas", nombreArchivo);
+
+            if (!System.IO.File.Exists(ruta))
+                return NotFound("Imagen no encontrada.");
+
+            var tipoMime = "image/jpeg"; // O usa lógica para detectar MIME según extensión
+            return PhysicalFile(ruta, tipoMime);
+        }
+
+        [HttpGet("canciones/{nombre}")]
+        [AllowAnonymous]
+        public IActionResult ObtenerCancionesDelArtistaPorNombre(string nombre)
+        {
+            // Obtener el artista por su nombre
+            var artista = _context.Artistas
+                .FirstOrDefault(a => a.NombreArtistico == nombre);
+
+            if (artista == null)
+                return NotFound("No se encontró el artista.");
+
+            // Obtener las canciones subidas por el artista
+            var canciones = _context.Canciones
+                .Where(c => c.ArtistaId == artista.Id)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Titulo,
+                    c.Artista.NombreArtistico,
+                    c.UrlArchivo
+                })
+                .ToList();
+
+            if (!canciones.Any())
+                return NotFound("No hay canciones para este artista.");
+
+            return Ok(canciones); // Devuelve la lista de canciones del artista
+        }
+
+        [HttpGet("perfil/{nombre}")]
+        [AllowAnonymous]
+        public IActionResult ObtenerPerfilDelArtistaPorNombre(string nombre)
+        {
+            // Obtener el artista por su nombre
+            var artista = _context.Artistas
+                .FirstOrDefault(a => a.NombreArtistico == nombre);
+
+            if (artista == null)
+                return NotFound("No se encontró el artista.");
+
+            // Crear un objeto con la información del artista
+            var perfilArtista = new
+            {
+                artista.Id,
+                artista.NombreArtistico,
+                artista.FotoUrl,
+                artista.Biografia 
+            };
+
+            return Ok(perfilArtista); // Devuelve solo el perfil del artista
+        }
     }
 }
