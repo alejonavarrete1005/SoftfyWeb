@@ -568,6 +568,29 @@
         }
       }
     },
+    "/api/Canciones/eliminar/{id}": {
+      "delete": {
+        "tags": [
+          "Canciones"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Oyentes/mi-perfil": {
       "get": {
         "tags": [
@@ -607,6 +630,44 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Oyentes": {
+      "get": {
+        "tags": [
+          "Oyentes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PerfilOyenteDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PerfilOyenteDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PerfilOyenteDto"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -968,6 +1029,18 @@
         }
       }
     },
+    "/api/Playlists/todas": {
+      "get": {
+        "tags": [
+          "Playlists"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Suscripciones/activar": {
       "post": {
         "tags": [
@@ -1261,6 +1334,10 @@
             "nullable": true
           },
           "apellido": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
             "type": "string",
             "nullable": true
           },

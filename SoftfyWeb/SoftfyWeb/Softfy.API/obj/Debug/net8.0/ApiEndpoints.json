@@ -336,6 +336,22 @@
   },
   {
     "ContainingType": "SoftfyWeb.Controllers.CancionesController",
+    "Method": "EliminarCancion",
+    "RelativePath": "api/Canciones/eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.CancionesController",
     "Method": "MisCanciones",
     "RelativePath": "api/Canciones/mis-canciones",
     "HttpMethod": "GET",
@@ -375,6 +391,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Softfy.API.Controllers.OyentesController",
+    "Method": "ObtenerTodosLosOyentes",
+    "RelativePath": "api/Oyentes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SoftfyWeb.Modelos.Dtos.PerfilOyenteDto, SoftfyWeb.Modelos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Softfy.API.Controllers.OyentesController",
@@ -622,6 +658,16 @@
     "ContainingType": "SoftfyWeb.Controllers.PlaylistsController",
     "Method": "ObtenerPlaylists",
     "RelativePath": "api/Playlists/mis-playlists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.PlaylistsController",
+    "Method": "ObtenerTodasLasPlaylists",
+    "RelativePath": "api/Playlists/todas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -36,6 +36,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/soft/Documents/Repositorios/proyecto.softfy/SoftfyWeb/SoftfyWeb/SoftfyWeb/Views/VistaAdmin/IndexCanciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFBZG1pblxJbmRleENhbmNpb25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/Repositorios/proyecto.softfy/SoftfyWeb/SoftfyWeb/SoftfyWeb/Views/VistaAdmin/IndexPlaylists.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFBZG1pblxJbmRleFBsYXlsaXN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/Repositorios/proyecto.softfy/SoftfyWeb/SoftfyWeb/SoftfyWeb/Views/VistaAdmin/IndexUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFBZG1pblxJbmRleFVzdWFyaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/soft/Documents/Repositorios/proyecto.softfy/SoftfyWeb/SoftfyWeb/SoftfyWeb/Views/VistaAdmin/VerCanciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFBZG1pblxWZXJDYW5jaW9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/soft/Documents/Repositorios/proyecto.softfy/SoftfyWeb/SoftfyWeb/SoftfyWeb/Views/VistasAuth/Bienvenido.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzQXV0aFxCaWVudmVuaWRvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

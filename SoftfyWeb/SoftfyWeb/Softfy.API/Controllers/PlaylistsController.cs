@@ -58,21 +58,24 @@ namespace SoftfyWeb.Controllers
             return Ok(playlists);
         }
 
-        [Authorize(Roles = "OyentePremium,Artista")]
+        [Authorize(Roles = "OyentePremium,Artista,Admin")]
         [HttpGet("{id}/canciones")]
         public async Task<IActionResult> ObtenerCanciones(int id)
         {
-            var usuario = await _userManager.GetUserAsync(User);
+            var playlist = await _context.Playlists
+                .Include(p => p.PlaylistCanciones)
+                    .ThenInclude(pc => pc.Cancion)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
-            var canciones = _context.PlaylistCanciones
-                .Where(pc => pc.Playlist.UsuarioId == usuario.Id && pc.PlaylistId == id)
-                .Select(pc => new
-                {
-                    pc.Cancion.Id,
-                    pc.Cancion.Titulo,
-                    pc.Cancion.UrlArchivo
-                })
-                .ToList();
+            if (playlist == null)
+                return NotFound(new { mensaje = "Playlist no encontrada." });
+
+            var canciones = playlist.PlaylistCanciones.Select(pc => new
+            {
+                pc.Cancion.Id,
+                pc.Cancion.Titulo,
+                pc.Cancion.UrlArchivo
+            }).ToList();
 
             return Ok(canciones);
         }
@@ -147,7 +150,7 @@ namespace SoftfyWeb.Controllers
             return Ok(new { mensaje = "Nombre de playlist actualizado", nuevoNombre });
         }
 
-        [Authorize(Roles = "OyentePremium,Artista")]
+        [Authorize(Roles = "OyentePremium,Artista,Admin")]
         [HttpDelete("{playlistId}/eliminar")]
         public async Task<IActionResult> EliminarPlaylist(int playlistId)
         {
@@ -203,8 +206,7 @@ namespace SoftfyWeb.Controllers
             });
         }
 
-        // Dar me gusta (agrega a playlist Me Gusta)
-        //[Authorize(Roles = "OyenteFree")]
+        //falta
         [HttpPost("me-gusta/{cancionId}")]
         public async Task<IActionResult> DarMeGusta(int cancionId)
         {
@@ -265,6 +267,24 @@ namespace SoftfyWeb.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { mensaje = "Canción removida de Me Gusta" });
+        }
+
+        [HttpGet("todas")]
+        public async Task<IActionResult> ObtenerTodasLasPlaylists()
+        {
+            var playlists = await _context.Playlists
+                .Include(p => p.Usuario)
+                .Include(p => p.PlaylistCanciones)
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Nombre,
+                    Propietario = p.Usuario.Email,
+                    TotalCanciones = p.PlaylistCanciones.Count,
+                })
+                .ToListAsync();
+
+            return Ok(playlists);
         }
 
 
