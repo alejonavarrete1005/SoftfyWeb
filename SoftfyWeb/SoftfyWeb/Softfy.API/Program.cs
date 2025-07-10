@@ -31,7 +31,7 @@ builder.Services.AddIdentity<Usuario, IdentityRole>(options =>
     options.User.RequireUniqueEmail = true; // Evita registros con el mismo correo
     // Configuración de lockout
     options.Lockout.MaxFailedAccessAttempts = 5;  // Número máximo de intentos fallidos antes de bloquear la cuenta
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);  // Tiempo de bloqueo (1 minuto)
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);  
     options.Lockout.AllowedForNewUsers = true;  // Permite el lockout para usuarios nuevos
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -73,7 +73,12 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
+// Configurar la semilla de roles y usuario inicial
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    await SeedData.CrearUsuarioInicialAsync(serviceProvider);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

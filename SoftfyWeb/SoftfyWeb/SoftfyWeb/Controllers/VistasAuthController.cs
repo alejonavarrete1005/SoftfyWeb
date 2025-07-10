@@ -157,29 +157,29 @@ namespace SoftfyWeb.Controllers
 
             if (!resp.IsSuccessStatusCode)
             {
-                ViewBag.Error = "Credenciales inválidas.";
+                var errorResponse = JsonDocument.Parse(raw).RootElement;
+                var errorMessage = errorResponse.GetProperty("error").GetString();  // Extraemos el mensaje de error
+
+                // Aquí mostramos el error de confirmación de correo o credenciales inválidas
+                ViewBag.Error = errorMessage;
                 return View(dto);
             }
-            var token = JsonDocument.Parse(raw)
-                                   .RootElement
-                                   .GetProperty("token")
-                                   .GetString();
 
-            // 1) Parseamos el JWT y extraemos sus claims
+            // Si las credenciales son correctas, procesamos el JWT
+            var token = JsonDocument.Parse(raw).RootElement.GetProperty("token").GetString();
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadJwtToken(token);
 
-            // 2) Construimos la identidad con esquema de cookies
+            // Creamos la identidad y el principal del usuario
             var identity = new ClaimsIdentity(
                 jwtToken.Claims,
                 CookieAuthenticationDefaults.AuthenticationScheme
             );
-            // Guardamos el raw JWT como claim para usarlo luego en HttpClient
             identity.AddClaim(new Claim("jwt", token));
 
             var principal = new ClaimsPrincipal(identity);
 
-            // 3) Firmamos al usuario: el middleware creará/actualizará 'auth_cookie'
+            // Iniciamos la sesión
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 principal,
@@ -189,6 +189,7 @@ namespace SoftfyWeb.Controllers
                     IsPersistent = false
                 }
             );
+
             var role = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
@@ -199,6 +200,8 @@ namespace SoftfyWeb.Controllers
 
             return RedirectToAction(nameof(Bienvenido));
         }
+
+
 
 
         [HttpGet]

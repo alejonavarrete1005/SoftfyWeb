@@ -126,7 +126,21 @@ namespace SoftfyWeb.Controllers
                 var lockoutEnd = await _userManager.GetLockoutEndDateAsync(usuario);
                 var remainingLockoutTime = lockoutEnd?.Subtract(DateTimeOffset.Now);
 
-                return Unauthorized(new { error = $"La cuenta está bloqueada. Intenta nuevamente en {remainingLockoutTime?.Minutes} minutos." });
+                if (remainingLockoutTime.HasValue)
+                {
+                    // Si el tiempo restante es menor a 1 minuto, mostrar los segundos restantes
+                    if (remainingLockoutTime.Value.TotalMinutes < 1)
+                    {
+                        int remainingSeconds = (int)remainingLockoutTime.Value.TotalSeconds;
+                        return Unauthorized(new { error = $"La cuenta está bloqueada. Intenta nuevamente en {remainingSeconds} segundo{(remainingSeconds > 1 ? "s" : "")}." });
+                    }
+                    else
+                    {
+                        // Si el tiempo restante es mayor o igual a 1 minuto, mostrar los minutos
+                        int remainingMinutes = (int)remainingLockoutTime.Value.TotalMinutes;
+                        return Unauthorized(new { error = $"La cuenta está bloqueada. Intenta nuevamente en {remainingMinutes} minuto{(remainingMinutes > 1 ? "s" : "")}." });
+                    }
+                }
             }
 
             // Validar las credenciales
@@ -143,7 +157,20 @@ namespace SoftfyWeb.Controllers
                     var lockoutEnd = await _userManager.GetLockoutEndDateAsync(usuario);
                     var remainingLockoutTime = lockoutEnd?.Subtract(DateTimeOffset.Now);
 
-                    return Unauthorized(new { error = $"La cuenta está bloqueada. Intenta nuevamente en {remainingLockoutTime?.Minutes} minutos." });
+                    // Mostrar el tiempo restante del bloqueo
+                    if (remainingLockoutTime.HasValue)
+                    {
+                        if (remainingLockoutTime.Value.TotalMinutes < 1)
+                        {
+                            int remainingSeconds = (int)remainingLockoutTime.Value.TotalSeconds;
+                            return Unauthorized(new { error = $"La cuenta está bloqueada. Intenta nuevamente en {remainingSeconds} segundo{(remainingSeconds > 1 ? "s" : "")}." });
+                        }
+                        else
+                        {
+                            int remainingMinutes = (int)remainingLockoutTime.Value.TotalMinutes;
+                            return Unauthorized(new { error = $"La cuenta está bloqueada. Intenta nuevamente en {remainingMinutes} minuto{(remainingMinutes > 1 ? "s" : "")}." });
+                        }
+                    }
                 }
 
                 return Unauthorized(new { error = "Credenciales inválidas" });
@@ -162,6 +189,7 @@ namespace SoftfyWeb.Controllers
                 token = token
             });
         }
+
 
         [HttpPost("registro-artista")]
         public async Task<IActionResult> RegistrarArtista([FromBody] ArtistaRegistroDto dto)

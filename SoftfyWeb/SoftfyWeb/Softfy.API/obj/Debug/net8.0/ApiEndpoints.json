@@ -1,9 +1,93 @@
 [
   {
     "ContainingType": "SoftfyWeb.Controllers.AdminController",
-    "Method": "EliminarUsuariosPrueba",
-    "RelativePath": "api/Admin/eliminar-usuarios-prueba",
+    "Method": "BloquearUsuario",
+    "RelativePath": "api/Admin/bloquear/{email}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.AdminController",
+    "Method": "EliminarCancion",
+    "RelativePath": "api/Admin/cancion/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.AdminController",
+    "Method": "ObtenerCanciones",
+    "RelativePath": "api/Admin/canciones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.AdminController",
+    "Method": "DesbloquearUsuario",
+    "RelativePath": "api/Admin/desbloquear/{email}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.AdminController",
+    "Method": "EliminarUsuario",
+    "RelativePath": "api/Admin/usuario/{email}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.AdminController",
+    "Method": "ObtenerUsuarios",
+    "RelativePath": "api/Admin/usuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.AdminController",
+    "Method": "ObtenerUsuariosBloqueados",
+    "RelativePath": "api/Admin/usuarios-bloqueados",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],

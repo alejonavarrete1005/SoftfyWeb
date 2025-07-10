@@ -1,0 +1,19 @@
+# Ignorar carpetas y archivos de Visual Studio
+.vs/
+
+# Ignorar carpetas de compilación y dependencias
+bin/
+obj/
+
+# Archivos generados de compilación
+*.dll
+*.exe
+*.pdb
+*.cache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de bases de datos y otros temporales
+*.db
