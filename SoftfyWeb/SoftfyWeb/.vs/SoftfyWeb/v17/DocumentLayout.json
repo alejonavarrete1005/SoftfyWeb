@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\controllers\\vistasauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\controllers\\vistasauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistasauth\\verperfilpublicoartista.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistasauth\\verperfilpublicoartista.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|c:\\users\\soft\\documents\\repositorios\\proyecto.softfy\\softfyweb\\softfyweb\\softfyweb\\views\\vistasauth\\buscar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{28C55C5C-D400-4810-B907-953415C8A1E5}|SoftfyWeb\\SoftfyWeb.csproj|solutionrelative:softfyweb\\views\\vistasauth\\buscar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +35,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VerPerfilPublicoArtista.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\VerPerfilPublicoArtista.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasAuth\\VerPerfilPublicoArtista.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\VerPerfilPublicoArtista.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasAuth\\VerPerfilPublicoArtista.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-10T23:28:21.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Buscar.cshtml",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "RelativeToolTip": "SoftfyWeb\\Views\\VistasAuth\\Buscar.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAHUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-10T23:26:24.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VistasAuthController.cs",
+              "DocumentMoniker": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "RelativeDocumentMoniker": "SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "ToolTip": "C:\\Users\\soft\\Documents\\Repositorios\\proyecto.softfy\\SoftfyWeb\\SoftfyWeb\\SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "RelativeToolTip": "SoftfyWeb\\Controllers\\VistasAuthController.cs",
+              "ViewState": "AgIAAKkBAAAAAAAAAAAuwLUBAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T23:22:00.173Z",
+              "EditorCaption": ""
             }
           ]
         },

@@ -105,6 +105,22 @@
   },
   {
     "ContainingType": "SoftfyWeb.Controllers.ArtistasController",
+    "Method": "ObtenerPerfilPorId",
+    "RelativePath": "api/Artistas/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoftfyWeb.Controllers.ArtistasController",
     "Method": "ObtenerCancionesDelArtista",
     "RelativePath": "api/Artistas/{id}/canciones",
     "HttpMethod": "GET",

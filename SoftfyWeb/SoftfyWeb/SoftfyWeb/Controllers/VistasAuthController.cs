@@ -424,6 +424,43 @@ namespace SoftfyWeb.Controllers
 
             return NotFound("Perfil no encontrado.");
         }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> VerPerfilpublico(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responsePerfil = await client.GetAsync($"https://localhost:7003/api/Artistas/{id}");
+
+            if (!responsePerfil.IsSuccessStatusCode)
+                return NotFound("Perfil del artista no encontrado");
+
+            var rawPerfil = await responsePerfil.Content.ReadAsStringAsync();
+            var perfil = JsonSerializer.Deserialize<PerfilArtistaDto>(rawPerfil,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            var responseCanciones = await client.GetAsync($"https://localhost:7003/api/Artistas/{id}/canciones");
+            List<CancionDto> canciones = new List<CancionDto>();
+            if (responseCanciones.IsSuccessStatusCode)
+            {
+                var rawCanciones = await responseCanciones.Content.ReadAsStringAsync();
+                canciones = JsonSerializer.Deserialize<List<CancionDto>>(rawCanciones, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            }
+
+            if (!string.IsNullOrEmpty(perfil.FotoUrl))
+            {
+                perfil.FotoUrl = $"https://localhost:7003/api/artistas/foto/{perfil.FotoUrl}";
+            }
+
+            ViewBag.ArtistaId = id;
+            ViewBag.NombreArtistico = perfil.NombreArtistico;
+            ViewBag.FotoUrl = perfil.FotoUrl;
+            ViewBag.Biografia = perfil.Biografia;
+            ViewBag.Email = perfil.UsuarioEmail;
+            ViewBag.Canciones = canciones;
+
+            return View("VerPerfilPublicoArtista");
+        }
 
         [HttpPost]
         public async Task<IActionResult> ActualizarPerfilArtista(string NombreArtistico, string Biografia, IFormFile Foto)
