@@ -133,36 +133,34 @@ namespace SoftfyWeb.Controllers
             return RedirectToAction("IndexPlaylists");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> VerCanciones(int id)
+        [AllowAnonymous]
+[HttpGet]
+public async Task<IActionResult> VerCanciones(int id)
+{
+    var client = ObtenerClienteConToken();
+    var response = await client.GetAsync($"https://localhost:7003/api/playlists/{id}/canciones");
+
+    if (!response.IsSuccessStatusCode)
+    {
+        ViewBag.Error = "No se pudieron obtener las canciones de la playlist.";
+        return View(new List<PlaylistCancionDto>());
+    }
+
+    var contenido = await response.Content.ReadAsStringAsync();
+    var canciones = JsonSerializer.Deserialize<List<PlaylistCancionDto>>(contenido,
+        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+    foreach (var cancion in canciones)
+    {
+        if (string.IsNullOrWhiteSpace(cancion.UrlArchivo))
         {
-            var client = ObtenerClienteConToken(); // Llamar al método actualizado
-            var response = await client.GetAsync($"playlists/{id}/canciones");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                ViewBag.Error = "No se pudieron obtener las canciones de la playlist.";
-                return View(new List<PlaylistCancionDto>());
-            }
-
-            var contenido = await response.Content.ReadAsStringAsync();
-            Console.WriteLine("Respuesta de la API: ");
-            Console.WriteLine(contenido);
-            var canciones = JsonSerializer.Deserialize<List<PlaylistCancionDto>>(contenido,
-                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            Console.WriteLine(canciones);
-
-            foreach (var cancion in canciones)
-            {
-                if (string.IsNullOrWhiteSpace(cancion.UrlArchivo))
-                {
-                    cancion.UrlArchivo = "#";
-                }
-            }
-
-            ViewBag.PlaylistId = id;
-            return View("VerCanciones", canciones);
+            cancion.UrlArchivo = "#"; 
         }
+    }
+
+    ViewBag.PlaylistId = id;
+    return View("VerCanciones", canciones);
+}
 
         [HttpPost]
         public async Task<IActionResult> BloquearUsuario(string email)

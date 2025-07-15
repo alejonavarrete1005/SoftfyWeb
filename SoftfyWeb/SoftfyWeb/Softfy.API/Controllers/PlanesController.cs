@@ -34,7 +34,7 @@ namespace SoftfyWeb.Controllers
         }
 
         // Registrar un nuevo plan (solo Admin)
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Admin")]
         [HttpPost("registrar")]
         public async Task<IActionResult> RegistrarPlan([FromBody] Plan plan)
         {
@@ -48,7 +48,7 @@ namespace SoftfyWeb.Controllers
         }
 
         // (Opcional) Actualizar un plan
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarPlan(int id, [FromBody] Plan planActualizado)
         {
@@ -65,7 +65,7 @@ namespace SoftfyWeb.Controllers
         }
 
         // (Opcional) Eliminar un plan
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarPlan(int id)
         {
@@ -76,6 +76,26 @@ namespace SoftfyWeb.Controllers
             _context.Planes.Remove(plan);
             await _context.SaveChangesAsync();
             return Ok(new { mensaje = "Plan eliminado correctamente" });
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ObtenerPlanPorId(int id)
+        {
+            var plan = await _context.Planes
+                .Where(p => p.Id == id)
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Nombre,
+                    p.Precio,
+                    p.MaxUsuarios
+                })
+                .FirstOrDefaultAsync();
+
+            if (plan == null)
+                return NotFound(new { mensaje = "Plan no encontrado" });
+
+            return Ok(plan);
         }
     }
 }

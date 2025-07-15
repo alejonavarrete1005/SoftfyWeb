@@ -1,25 +1,45 @@
 ﻿@model IEnumerable<SoftfyWeb.Modelos.Dtos.PlaylistCancionDto>
 
-<h2>Detalle de la Playlist</h2>
+@{
+    ViewData["Title"] = "Ver Playlist";
+    var playlistId = ViewBag.PlaylistId as int?;
+    var nombrePlaylist = ViewBag.NombrePlaylist as string ?? "Playlist";
+}
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Archivo</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var c in Model)
-        {
-            <tr>
-                <td>@c.Titulo</td>
-                <td>
-                    <audio controls>
-                        <source src="@c.UrlArchivo" type="audio/mpeg" />
-                    </audio>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="container mt-4">
+    <h2>
+        <a asp-action="VerPlaylist" asp-route-id="@playlistId" class="text-decoration-none">
+            🎵 @nombrePlaylist
+        </a>
+    </h2>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">Esta playlist no tiene canciones aún.</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Audio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.Titulo</td>
+                        <td>
+                            <audio controls style="width: 200px;">
+                                <source src="@c.UrlArchivo" type="audio/mpeg" />
+                                Tu navegador no soporta audio.
+                            </audio>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
