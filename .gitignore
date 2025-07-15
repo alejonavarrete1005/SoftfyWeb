@@ -1,19 +1,40 @@
-# Ignorar carpetas y archivos de Visual Studio
-.vs/
-
-# Ignorar carpetas de compilación y dependencias
+# Build outputs
 bin/
 obj/
 
-# Archivos generados de compilación
-*.dll
-*.exe
-*.pdb
-*.cache
+# Visual Studio files
+.vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Archivos de bases de datos y otros temporales
-*.db
+# Rider
+.idea/
+
+# Copilot indices and caches
+**/CopilotIndices/
+**/.futdcache*
+**/*.db
+
+# Visual Studio cache and layout
+**/*.cache.json
+**/*.suo
+
+# Debug symbols and executables
+*.pdb
+*.exe
+*.dll
+
+# Generated files
+*.log
+*.vsix
+
+# Node (si usas JS/TS en algún lugar)
+node_modules/
+
+# Visual Studio Code
+.vscode/
+
+# Configuración de usuario
+*.env
