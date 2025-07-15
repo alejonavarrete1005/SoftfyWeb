@@ -11,7 +11,8 @@
             <th>Título</th>
             <th>Género</th>
             <th>Fecha Lanzamiento</th>
-            <th>Reproducir</th> <!-- Nueva columna para el reproductor -->
+            <th>Reproducir</th>
+            <th>Acción</th> <!-- Nueva columna para el botón de Me Gusta -->
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,17 @@
                         <source src="@c.UrlArchivo" type="audio/mpeg">
                         Tu navegador no soporta el elemento de audio.
                     </audio>
+                </td>
+                <td>
+                    <!-- Botón de Me Gusta -->
+                    <form asp-controller="VistasPlaylists" asp-action="DarMeGusta" method="post" class="d-inline">
+                        <input type="hidden" name="cancionId" value="@c.Id" />
+                        <button type="submit" class="btn btn-sm btn-primary"
+                                onclick="return confirm('¿Agregar esta canción a Me Gusta?');">
+                            Me Gusta
+                        </button>
+                    </form>
+
                 </td>
             </tr>
         }

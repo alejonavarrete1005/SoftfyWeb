@@ -185,12 +185,15 @@ namespace SoftfyWeb.Controllers
         public async Task<IActionResult> DarMeGusta(int cancionId)
         {
             var client = ObtenerClienteConToken();
-            var resp = await client.PostAsync($"playlists/me-gusta/{cancionId}", null);
-            if (resp.IsSuccessStatusCode)
-                return RedirectToAction(nameof(MeGusta));
+            var resp = await client.PostAsync($"playlists/me-gusta/{cancionId}", null); 
 
+            if (resp.IsSuccessStatusCode)
+            {   
+                return RedirectToAction(nameof(MeGusta));
+            }
             return View("Error", CrearErrorModel());
         }
+
 
         [Authorize(Roles = "OyentePremium,Oyente")]
         public async Task<IActionResult> MeGusta()
