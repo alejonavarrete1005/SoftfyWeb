@@ -134,33 +134,33 @@ namespace SoftfyWeb.Controllers
         }
 
         [AllowAnonymous]
-[HttpGet]
-public async Task<IActionResult> VerCanciones(int id)
-{
-    var client = ObtenerClienteConToken();
-    var response = await client.GetAsync($"https://localhost:7003/api/playlists/{id}/canciones");
-
-    if (!response.IsSuccessStatusCode)
-    {
-        ViewBag.Error = "No se pudieron obtener las canciones de la playlist.";
-        return View(new List<PlaylistCancionDto>());
-    }
-
-    var contenido = await response.Content.ReadAsStringAsync();
-    var canciones = JsonSerializer.Deserialize<List<PlaylistCancionDto>>(contenido,
-        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-    foreach (var cancion in canciones)
-    {
-        if (string.IsNullOrWhiteSpace(cancion.UrlArchivo))
+        [HttpGet]
+        public async Task<IActionResult> VerCanciones(int id)
         {
-            cancion.UrlArchivo = "#"; 
-        }
-    }
+            var client = ObtenerClienteConToken();
+            var response = await client.GetAsync($"https://localhost:7003/api/playlists/{id}/canciones");
 
-    ViewBag.PlaylistId = id;
-    return View("VerCanciones", canciones);
-}
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.Error = "No se pudieron obtener las canciones de la playlist.";
+                return View(new List<PlaylistCancionDto>());
+            }
+
+            var contenido = await response.Content.ReadAsStringAsync();
+            var canciones = JsonSerializer.Deserialize<List<PlaylistCancionDto>>(contenido,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            foreach (var cancion in canciones)
+            {
+                if (string.IsNullOrWhiteSpace(cancion.UrlArchivo))
+                {
+                    cancion.UrlArchivo = "#"; 
+                }
+            }
+
+            ViewBag.PlaylistId = id;
+            return View("VerCanciones", canciones);
+        }
 
         [HttpPost]
         public async Task<IActionResult> BloquearUsuario(string email)

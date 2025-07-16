@@ -37,13 +37,13 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .song-card h5 {
-            color: var(--text-light);
-        }
+            .song-card h5 {
+                color: var(--text-light);
+            }
 
-        .song-card p {
-            color: var(--accent);
-        }
+            .song-card p {
+                color: var(--accent);
+            }
 
         .audio-player {
             background-color: var(--btn-bg);
@@ -52,10 +52,10 @@
             padding: 1rem;
         }
 
-        .audio-player audio {
-            width: 100%;
-            border-radius: 6px;
-        }
+            .audio-player audio {
+                width: 100%;
+                border-radius: 6px;
+            }
     </style>
 </head>
 <body>
@@ -81,6 +81,14 @@
                                     Tu navegador no soporta el elemento de audio.
                                 </audio>
                             </div>
+
+                            <!-- Botón para eliminar -->
+                            <form method="post" action="@Url.Action("EliminarCancion", "VistasCanciones")" onsubmit="return confirm('¿Estás seguro de eliminar esta canción?');">
+                                <input type="hidden" name="id" value="@cancion.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm mt-2">Eliminar</button>
+                            </form>
+
+              
                         </div>
                     </div>
                 }

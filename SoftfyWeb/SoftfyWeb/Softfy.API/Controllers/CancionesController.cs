@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Softfy.API.Services;
 using SoftfyWeb.Data;
 using SoftfyWeb.Dtos;
 using SoftfyWeb.Modelos;
+using SoftfyWeb.Modelos.Dtos;
 using System.Security.Claims;
 
 namespace SoftfyWeb.Controllers
@@ -12,10 +15,12 @@ namespace SoftfyWeb.Controllers
     public class CancionesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly AudioService _audioService;
 
-        public CancionesController(ApplicationDbContext context)
+        public CancionesController(ApplicationDbContext context, AudioService audioService)
         {
             _context = context;
+            _audioService = audioService;
         }
 
         [HttpPost("crear")]
@@ -23,66 +28,43 @@ namespace SoftfyWeb.Controllers
         public async Task<IActionResult> CrearCancion([FromForm] CancionCrearDto dto, IFormFile archivoCancion)
         {
             var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             var artista = _context.Artistas.FirstOrDefault(a => a.UsuarioId == usuarioId);
+
             if (artista == null)
                 return BadRequest("El usuario no tiene un perfil de artista.");
 
             if (archivoCancion == null || archivoCancion.Length == 0)
                 return BadRequest("No se ha seleccionado un archivo para la canción.");
 
-            // Validar extensión del archivo
-            var allowedExtensions = new[] { ".mp3", ".wav" };
-            var fileExtension = Path.GetExtension(archivoCancion.FileName).ToLower();
+            var extension = Path.GetExtension(archivoCancion.FileName).ToLower();
+            if (extension != ".mp3" && extension != ".wav")
+                return BadRequest("Solo se permiten archivos .mp3 y .wav.");
 
-            if (!allowedExtensions.Contains(fileExtension))
-                return BadRequest("El tipo de archivo no es compatible. Solo se permiten archivos .mp3 y .wav.");
-
-            // Rutas para almacenar el archivo de la canción
-            var relativePath = Path.Combine("ArchivosCanciones", archivoCancion.FileName);
-            var absolutePath = Path.Combine(Directory.GetCurrentDirectory(), relativePath);
-
-            // Asegurarse de que el directorio exista
-            var directory = Path.GetDirectoryName(absolutePath);
-            if (!Directory.Exists(directory))
+            RawUploadResult uploadResult;
+            try
             {
-                Directory.CreateDirectory(directory);
+                uploadResult = await _audioService.SubirAudioCloudinaryAsync(archivoCancion);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensaje = "Error al subir a Cloudinary", detalle = ex.Message });
             }
 
-            using (var stream = new FileStream(absolutePath, FileMode.Create))
-            {
-                await archivoCancion.CopyToAsync(stream);
-            }
-
+            // Guardar en la BD
             var cancion = new Cancion
             {
                 Titulo = dto.Titulo,
                 Genero = dto.Genero,
                 FechaLanzamiento = DateTime.SpecifyKind(dto.FechaLanzamiento, DateTimeKind.Utc),
-                UrlArchivo = relativePath,  // Ruta relativa donde se guarda el archivo
+                UrlArchivo = uploadResult.SecureUrl.ToString(),
                 ArtistaId = artista.Id
             };
 
             _context.Canciones.Add(cancion);
             await _context.SaveChangesAsync();
 
-            return Ok(new { mensaje = "Canción creada correctamente" });
+            return Ok(new { mensaje = "Canción subida correctamente", url = cancion.UrlArchivo });
         }
-
-        [HttpGet("reproducir/{nombreArchivo}")]
-        [AllowAnonymous]
-        public IActionResult ReproducirCancion(string nombreArchivo)
-        {
-            var rutaArchivo = Path.Combine(Directory.GetCurrentDirectory(), "ArchivosCanciones", nombreArchivo);
-
-            if (!System.IO.File.Exists(rutaArchivo))
-                return NotFound("El archivo no existe.");
-
-            var fileBytes = System.IO.File.ReadAllBytes(rutaArchivo);
-            return File(fileBytes, "audio/mpeg");  // Puedes cambiar el tipo MIME si es otro formato
-        }
-
-
 
 
         [HttpGet("mis-canciones")]
@@ -161,17 +143,48 @@ namespace SoftfyWeb.Controllers
 
             return Ok(canciones);
         }
-        // Eliminar canción
+
         [HttpDelete("eliminar/{id}")]
+        [Authorize(Roles = "Admin,Artista")]
         public async Task<IActionResult> EliminarCancion(int id)
         {
             var cancion = await _context.Canciones.FindAsync(id);
-            if (cancion == null) return NotFound();
+            if (cancion == null)
+                return NotFound("Canción no encontrada.");
 
-            _context.Canciones.Remove(cancion);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _audioService.EliminarArchivoAsync(cancion.UrlArchivo);
+                _context.Canciones.Remove(cancion);
+                await _context.SaveChangesAsync();
 
-            return Ok(new { mensaje = "Canción eliminada correctamente." });
+                return Ok(new { mensaje = "Canción eliminada correctamente." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al eliminar: {ex.Message}");
+            }
+        }
+
+
+
+        [HttpGet("canciones/{id}")]
+        [Authorize(Roles = "Artista")]
+        public async Task<IActionResult> ObtenerCancionPorId(int id)
+        {
+            var cancion = await _context.Canciones.FindAsync(id);
+
+            if (cancion == null)
+                return NotFound("Canción no encontrada.");
+
+            return Ok(new CancionRespuestaDto
+            {
+                Id = cancion.Id,
+                Titulo = cancion.Titulo,
+                Genero = cancion.Genero,
+                FechaLanzamiento = cancion.FechaLanzamiento,
+                UrlArchivo = cancion.UrlArchivo
+            });
         }
 
     }

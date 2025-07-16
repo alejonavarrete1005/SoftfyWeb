@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SoftfyWeb.Data;
 using SoftfyWeb.Modelos;
+using SoftfyWeb.Modelos.Dtos;
 
 namespace SoftfyWeb.Controllers
 {
@@ -288,7 +289,56 @@ namespace SoftfyWeb.Controllers
         }
 
 
+        [HttpGet("todas/artistas")]
+        public async Task<IActionResult> ObtenerPlaylistsDeArtistas()
+        {
+            var artistas = await _context.Artistas
+                .Include(a => a.Usuario)
+                .ToListAsync();
 
+            var artistasIds = artistas.Select(a => a.UsuarioId).ToList();
+
+            var playlists = await _context.Playlists
+                .Include(p => p.Usuario)
+                .Include(p => p.PlaylistCanciones)
+                .Where(p => artistasIds.Contains(p.UsuarioId))
+                .ToListAsync();
+
+            var resultado = playlists.Select(p =>
+            {
+                var artista = artistas.FirstOrDefault(a => a.UsuarioId == p.UsuarioId);
+
+                return new PlaylistDto
+                {
+                    Id = p.Id,
+                    Nombre = p.Nombre,
+                    Propietario = p.Usuario.Email,
+                    NombreArtistico = artista?.NombreArtistico,
+                    TotalCanciones = p.PlaylistCanciones.Count
+                };
+            }).ToList();
+
+            return Ok(resultado);
+        }
+
+        [HttpGet("correo/{email}/playlists")]
+        [AllowAnonymous]
+        public IActionResult ObtenerPlaylistsPorCorreo(string email)
+        {
+            var playlists = _context.Playlists
+                .Include(p => p.Usuario)
+                .Include(p => p.PlaylistCanciones)
+                .Where(p => p.Usuario.Email == email && !p.EsMeGusta)
+                .Select(p => new PlaylistDto
+                {
+                    Id = p.Id,
+                    Nombre = p.Nombre,
+                    TotalCanciones = p.PlaylistCanciones.Count,
+                })
+                .ToList();
+
+            return Ok(playlists);
+        }
 
     }
 }

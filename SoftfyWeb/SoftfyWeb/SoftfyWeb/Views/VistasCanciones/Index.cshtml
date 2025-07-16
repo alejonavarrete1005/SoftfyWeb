@@ -12,7 +12,7 @@
             <th>Género</th>
             <th>Fecha Lanzamiento</th>
             <th>Reproducir</th>
-            <th>Acción</th> <!-- Nueva columna para el botón de Me Gusta -->
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -23,14 +23,12 @@
                 <td>@c.Genero</td>
                 <td>@c.FechaLanzamiento.ToString("yyyy-MM-dd")</td>
                 <td>
-                    <!-- Reproductor de audio -->
                     <audio controls>
                         <source src="@c.UrlArchivo" type="audio/mpeg">
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </td>
                 <td>
-                    <!-- Botón de Me Gusta -->
                     <form asp-controller="VistasPlaylists" asp-action="DarMeGusta" method="post" class="d-inline">
                         <input type="hidden" name="cancionId" value="@c.Id" />
                         <button type="submit" class="btn btn-sm btn-primary"

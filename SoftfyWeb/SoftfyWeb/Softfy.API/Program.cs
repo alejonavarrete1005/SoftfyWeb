@@ -1,14 +1,14 @@
+using CloudinaryDotNet;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Softfy.API.Services;
 using SoftfyWeb.Data;
 using SoftfyWeb.Modelos;
 using SoftfyWeb.Services;
-using System.Text;
-using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +61,7 @@ builder.Services.AddAuthentication(options =>
 // Registrar servicios
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<JwtService>(); // Registrar el servicio JwtService
+builder.Services.AddScoped<AudioService>();
 
 // Configurar CORS para el front MVC
 builder.Services.AddCors(options =>
@@ -72,7 +73,18 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
+builder.Services.Configure<CloudinarySettings>(
+    builder.Configuration.GetSection("CloudinarySettings"));
+
+builder.Services.AddSingleton(x =>
+{
+    var config = builder.Configuration.GetSection("CloudinarySettings").Get<CloudinarySettings>();
+    var account = new Account(config.CloudName, config.ApiKey, config.ApiSecret);
+    return new Cloudinary(account);
+});
+
 var app = builder.Build();
+
 // Configurar la semilla de roles y usuario inicial
 using (var scope = app.Services.CreateScope())
 {
@@ -86,12 +98,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-// Servir archivos estáticos desde la carpeta ArchivosCanciones
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "ArchivosCanciones")),
-    RequestPath = "/ArchivosCanciones"
-});
+
 
 
 app.UseHttpsRedirection();

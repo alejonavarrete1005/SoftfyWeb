@@ -49,21 +49,14 @@ namespace SoftfyWeb.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            HttpClient client = ObtenerCliente();
-            HttpResponseMessage response = await client.GetAsync("canciones/canciones"); // Solicita todas las canciones
+            HttpClient client = ObtenerClienteConToken();
+            HttpResponseMessage response = await client.GetAsync("canciones/canciones");
             if (!response.IsSuccessStatusCode)
                 return View("Error", CrearErrorModel());
 
             var json = await response.Content.ReadAsStringAsync();
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var lista = JsonSerializer.Deserialize<List<CancionRespuestaDto>>(json, opciones);
-
-            // Asegurarse de que la URL del archivo esté correctamente formadaAdd commentMore actions
-            foreach (var cancion in lista)
-            {
-                var nombreArchivo = Path.GetFileName(cancion.UrlArchivo);
-                cancion.UrlArchivo = $"https://localhost:7003/api/canciones/reproducir/{nombreArchivo}";
-            }
 
             return View(lista);
         }
@@ -82,16 +75,6 @@ namespace SoftfyWeb.Controllers
             var json = await response.Content.ReadAsStringAsync();
             var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var lista = JsonSerializer.Deserialize<List<CancionRespuestaDto>>(json, opts);
-
-            // Asignar la URL completa para cada archivo, usando el endpoint correcto
-            foreach (var cancion in lista)
-            {
-                // Si UrlArchivo contiene una ruta completa, extraer solo el nombre del archivo
-                var nombreArchivo = Path.GetFileName(cancion.UrlArchivo);
-
-                // Asignar la URL correcta con el nombre del archivo
-                cancion.UrlArchivo = $"https://localhost:7003/api/canciones/reproducir/{nombreArchivo}";
-            }
 
             return View(lista);
         }
@@ -136,6 +119,17 @@ namespace SoftfyWeb.Controllers
             var err = await response.Content.ReadAsStringAsync();
             ModelState.AddModelError("", err);
             return View(dto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EliminarCancion(int id)
+        {
+            var client = ObtenerClienteConToken(); // Llamar al método actualizado
+            var response = await client.DeleteAsync($"https://localhost:7003/api/canciones/eliminar/{id}");
+
+            if (!response.IsSuccessStatusCode)
+                TempData["Error"] = "No se pudo eliminar la canción.";
+
+            return RedirectToAction("MisCanciones");
         }
 
         [AllowAnonymous]

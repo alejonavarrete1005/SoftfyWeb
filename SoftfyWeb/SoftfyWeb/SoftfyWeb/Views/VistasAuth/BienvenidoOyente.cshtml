@@ -1,27 +1,70 @@
-﻿@model SoftfyWeb.Modelos.Dtos.CancionRespuestaDto
-@{
-    ViewData["Title"] = "Bienvenido, @ViewBag.OyenteNombre";
+﻿@{
+    ViewData["Title"] = "Bienvenido, " + ViewBag.OyenteNombre;
 }
+
+<link rel="stylesheet" href="~/css/player.css" />
 
 <div class="container">
     <h2>Bienvenido a Softfy 🎵, @ViewBag.OyenteNombre</h2>
-    <!-- Sección de todas las canciones del sistema -->
+
     <div class="section">
         <h3>Todas las Canciones</h3>
         <div class="canciones-container">
             @foreach (var cancion in ViewBag.TodasCanciones)
             {
-                <div class="cancion-item">
+                <div class="cancion-item" style="position: relative;">
+                    <form asp-controller="VistasPlaylists" asp-action="DarMeGusta" method="post" class="d-inline" style="position: absolute; top: 10px; left: 10px;">
+                        <input type="hidden" name="cancionId" value="@cancion.Id" />
+                        <button type="submit" class="btn btn-sm btn-primary"
+                                onclick="return confirm('¿Agregar esta canción a Me Gusta?');">
+                            Me Gusta
+                        </button>
+                    </form>
+
                     <p><strong>@cancion.Titulo</strong></p>
-                    <p><em>@cancion.Genero</em></p>                 
                     <p><em>@cancion.Artista?.NombreArtistico</em></p>
-                    <p><em>@cancion.FechaLanzamiento</em></p>
+                    <p><em>@cancion.Genero</em></p>
+
                     @if (!string.IsNullOrEmpty(cancion.UrlArchivo))
                     {
-                        <audio controls>
-                            <source src="@cancion.UrlArchivo" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
+                        <div class="cancion-item">
+                            <p><strong>@cancion.Titulo</strong></p>
+                            <p><em>@cancion.Artista?.NombreArtistico</em></p>
+                            <p><em>@cancion.Genero</em></p>
+
+                            @if (!string.IsNullOrEmpty(cancion.UrlArchivo))
+                            {
+                                <audio id="audio-@cancion.Id" src="@cancion.UrlArchivo" preload="metadata"></audio>
+
+                                <div class="custom-player" data-audio-id="audio-@cancion.Id">
+                                    <div class="controls">
+                                        <button class="backward-btn">⏪</button>
+                                        <button class="play-btn">▶️</button>
+                                        <button class="forward-btn">⏩</button>
+                                    </div>
+
+                                    <div class="progress-container">
+                                        <input type="range" class="progress" value="0" min="0" step="0.1">
+                                        <span class="time">0:00 / 0:00</span>
+                                    </div>
+
+                                    <div class="volume-controls">
+                                        <input type="range" class="volume" min="0" max="1" step="0.01" value="1">
+                                        <button class="mute-btn">🔊</button>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <p>No disponible</p>
+                            }
+                            <form asp-controller="Playlists" asp-action="GuardarCancion" method="post">
+                                <input type="hidden" name="cancionId" value="@cancion.Id" />
+                                <button type="submit" class="btn btn-sm btn-primary" onclick="return confirm('¿Guardar esta canción?');">
+                                    Guardar canción
+                                </button>
+                            </form>
+                        </div>
                     }
                     else
                     {
@@ -31,35 +74,86 @@
             }
         </div>
     </div>
+    <div class="section">
+        <h3>Todas las Playlists</h3>
+        <div class="canciones-container">
+            @foreach (var playlist in ViewBag.TodasPlaylists)
+            {
+                <div class="cancion-item">
+                    <h4>
+                        <a asp-action="VerCanciones" asp-controller="VistaAdmin" asp-route-id="@playlist.Id" class="text-decoration-none">
+                            @playlist.Nombre
+                        </a>
+                    </h4>
+                    <p><strong>Artista:</strong> @playlist.NombreArtistico</p>
+                    <p><strong>Total de Canciones:</strong> @playlist.TotalCanciones</p>
+                </div>
+            }
+        </div>
+        <div class="section">
+            <h3>Todos los artistas</h3>
+            <div class="artistas-grid">
+                @foreach (var artista in ViewBag.Artistas)
+                {
+                    <div class="artista-card">
+                        <img src="@artista.FotoUrl" alt="Foto de @artista.NombreArtistico" class="artista-img" />
+                        <h5>
+                            <a href="@Url.Action("VerPerfilpublico", "VistasAuth", new { id = artista.Id })">
+                                @artista.NombreArtistico
+                            </a>
+                        </h5>
+
+                        <p class="bio">@artista.Biografia</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Estilos CSS para una visualización horizontal -->
+
+
+@section Scripts {
+    <script src="~/js/player.js"></script>
+}
+
 <style>
-    .section {
-        margin-top: 2rem;
-    }
-
-    .canciones-container {
+    .artistas-grid {
         display: flex;
-        overflow-x: auto;
-        gap: 1rem;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 1rem;
     }
 
-    .cancion-item {
-        min-width: 200px;
-        text-align: center;
-        background-color: #f1f1f1;
+    .artista-card {
+        width: 230px;
         padding: 1rem;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-align: center;
     }
 
-        .cancion-item p {
-            margin: 0.5rem 0;
-        }
+    .artista-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #1db954;
+        margin-bottom: 0.6rem;
+    }
 
-    audio {
-        width: 100%;
-        margin-top: 10px;
+    .artista-card h5 {
+        margin: 0;
+        font-size: 17px;
+        color: #111;
+    }
+
+    .artista-card .bio {
+        font-size: 13px;
+        color: #444;
+        margin-top: 0.3rem;
+        font-style: italic;
     }
 </style>
