@@ -1,0 +1,74 @@
+﻿body {
+    background-color: #000 !important; /* fondo negro general */
+    color: #fff !important; /* texto blanco general */
+}
+
+/* Sidebar */
+nav.bg-light {
+    background-color: #30363D !important;
+}
+
+    nav.bg-light .nav-link {
+        color: #fff !important;
+    }
+
+        nav.bg-light .nav-link:hover {
+            background-color: #495057 !important;
+            color: #fff !important;
+        }
+
+/* Navbar superior */
+.navbar.navbar-light.bg-white {
+    background-color: #1f1f1f !important;
+}
+
+.navbar .nav-link {
+    color: #ccc !important;
+}
+
+    .navbar .nav-link:hover {
+        color: #fff !important;
+    }
+
+/* Pie de página */
+footer {
+    background-color: #1f1f1f !important;
+    color: #ccc !important;
+}
+
+/* Contenedor principal */
+.container,
+.main-content,
+main {
+    background-color: #121212 !important;
+    color: #fff !important;
+}
+
+/* Tabla */
+.table {
+    background-color: #1f1f1f !important;
+    color: #fff;
+}
+
+    .table th,
+    .table td {
+        background-color: #1f1f1f !important;
+        color: #fff !important;
+        border-color: #444 !important;
+    }
+
+/* Botones */
+.btn-primary {
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

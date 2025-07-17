@@ -9,18 +9,18 @@ using SoftfyWeb.Data;
 
 #nullable disable
 
-namespace SoftfyWeb.Migrations
+namespace Softfy.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250527224910_CrearTablaSuscripcion")]
-    partial class CrearTablaSuscripcion
+    [Migration("20250717022630_V001")]
+    partial class V001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -104,12 +104,10 @@ namespace SoftfyWeb.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
@@ -146,12 +144,10 @@ namespace SoftfyWeb.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -201,6 +197,9 @@ namespace SoftfyWeb.Migrations
                     b.Property<int>("ArtistaId")
                         .HasColumnType("integer");
 
+                    b.Property<TimeSpan?>("Duracion")
+                        .HasColumnType("interval");
+
                     b.Property<DateTime>("FechaLanzamiento")
                         .HasColumnType("timestamp with time zone");
 
@@ -219,6 +218,56 @@ namespace SoftfyWeb.Migrations
                     b.HasIndex("ArtistaId");
 
                     b.ToTable("Canciones");
+                });
+
+            modelBuilder.Entity("SoftfyWeb.Modelos.MiembroSuscripcion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaAgregado")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("SuscripcionId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SuscripcionId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("MiembrosSuscripciones");
+                });
+
+            modelBuilder.Entity("SoftfyWeb.Modelos.Plan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MaxUsuarios")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Planes");
                 });
 
             modelBuilder.Entity("SoftfyWeb.Modelos.Playlist", b =>
@@ -276,17 +325,18 @@ namespace SoftfyWeb.Migrations
                     b.Property<DateTime>("FechaInicio")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Tipo")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("PlanId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("UsuarioId")
+                    b.Property<string>("UsuarioPrincipalId")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioId")
+                    b.HasIndex("PlanId");
+
+                    b.HasIndex("UsuarioPrincipalId")
                         .IsUnique();
 
                     b.ToTable("Suscripciones");
@@ -357,6 +407,9 @@ namespace SoftfyWeb.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -441,6 +494,25 @@ namespace SoftfyWeb.Migrations
                     b.Navigation("Artista");
                 });
 
+            modelBuilder.Entity("SoftfyWeb.Modelos.MiembroSuscripcion", b =>
+                {
+                    b.HasOne("SoftfyWeb.Modelos.Suscripcion", "Suscripcion")
+                        .WithMany("Miembros")
+                        .HasForeignKey("SuscripcionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoftfyWeb.Modelos.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Suscripcion");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("SoftfyWeb.Modelos.Playlist", b =>
                 {
                     b.HasOne("SoftfyWeb.Modelos.Usuario", "Usuario")
@@ -473,18 +545,36 @@ namespace SoftfyWeb.Migrations
 
             modelBuilder.Entity("SoftfyWeb.Modelos.Suscripcion", b =>
                 {
-                    b.HasOne("SoftfyWeb.Modelos.Usuario", "Usuario")
-                        .WithOne("Suscripcion")
-                        .HasForeignKey("SoftfyWeb.Modelos.Suscripcion", "UsuarioId")
+                    b.HasOne("SoftfyWeb.Modelos.Plan", "Plan")
+                        .WithMany("Suscripciones")
+                        .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Usuario");
+                    b.HasOne("SoftfyWeb.Modelos.Usuario", "UsuarioPrincipal")
+                        .WithOne("Suscripcion")
+                        .HasForeignKey("SoftfyWeb.Modelos.Suscripcion", "UsuarioPrincipalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Plan");
+
+                    b.Navigation("UsuarioPrincipal");
+                });
+
+            modelBuilder.Entity("SoftfyWeb.Modelos.Plan", b =>
+                {
+                    b.Navigation("Suscripciones");
                 });
 
             modelBuilder.Entity("SoftfyWeb.Modelos.Playlist", b =>
                 {
                     b.Navigation("PlaylistCanciones");
+                });
+
+            modelBuilder.Entity("SoftfyWeb.Modelos.Suscripcion", b =>
+                {
+                    b.Navigation("Miembros");
                 });
 
             modelBuilder.Entity("SoftfyWeb.Modelos.Usuario", b =>

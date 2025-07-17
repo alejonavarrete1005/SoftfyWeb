@@ -1,0 +1,34 @@
+﻿body {
+    background-color: #000; /* fondo negro general */
+    color: #fff; /* texto blanco general */
+}
+
+nav.bg-light {
+    background-color: #30363D !important; /* sidebar fondo */
+}
+
+    nav.bg-light .nav-link {
+        color: #fff !important; /* texto blanco en sidebar */
+    }
+
+        nav.bg-light .nav-link:hover {
+            background-color: #495057;
+            color: #fff !important;
+        }
+
+.navbar.navbar-light.bg-white {
+    background-color: #1f1f1f !important;
+}
+
+.navbar .nav-link {
+    color: #ccc !important;
+}
+
+    .navbar .nav-link:hover {
+        color: #fff !important;
+    }
+
+footer {
+    background-color: #1f1f1f;
+    color: #ccc;
+}

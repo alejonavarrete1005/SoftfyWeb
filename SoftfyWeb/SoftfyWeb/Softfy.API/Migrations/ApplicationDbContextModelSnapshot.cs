@@ -8,7 +8,7 @@ using SoftfyWeb.Data;
 
 #nullable disable
 
-namespace SoftfyWeb.Migrations
+namespace Softfy.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
