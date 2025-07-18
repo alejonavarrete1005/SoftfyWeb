@@ -34,7 +34,7 @@
             border-radius: 12px;
             margin-bottom: 1rem;
             padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px #1F242A);
         }
 
             .song-card h5 {
@@ -46,16 +46,19 @@
             }
 
         .audio-player {
-            background-color: var(--btn-bg);
+            background-color: transparent; /* Cambiado desde var(--btn-bg) */
             border-radius: 6px;
             margin-top: 1rem;
-            padding: 1rem;
+            padding: 0; /* eliminamos el padding extra */
         }
 
             .audio-player audio {
                 width: 100%;
                 border-radius: 6px;
+                background-color: #1F242A; 
+                padding: 0; /* eliminamos el padding extra */
             }
+
     </style>
 </head>
 <body>

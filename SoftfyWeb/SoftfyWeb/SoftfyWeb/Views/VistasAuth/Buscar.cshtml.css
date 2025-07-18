@@ -1,0 +1,24 @@
+﻿h2.text-center {
+    color: #fff;
+}
+
+.list-group-item {
+    background-color: #3a3a3a !important;
+    color: #fff;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+    .list-group-item strong {
+        color: #ffffff;
+    }
+
+    .list-group-item span {
+        color: #d1d1d1;
+    }
+
+h3 {
+    color: #fff;
+    margin-top: 30px;
+}

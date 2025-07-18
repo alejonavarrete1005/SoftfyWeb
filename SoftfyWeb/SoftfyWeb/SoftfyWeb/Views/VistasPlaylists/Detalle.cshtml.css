@@ -1,0 +1,10 @@
+﻿.custom-song-item {
+    background-color: #3a3a3a;
+    color: white;
+    border: none;
+    border-bottom: 1px solid #555; /* Línea divisoria gris */
+}
+
+    .custom-song-item:last-child {
+        border-bottom: none; /* Quita línea al final */
+    }
