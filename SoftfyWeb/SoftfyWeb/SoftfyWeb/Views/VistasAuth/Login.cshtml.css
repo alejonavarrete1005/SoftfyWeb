@@ -1,9 +1,7 @@
-﻿/* Fondo completo de la vista */
-body {
+﻿body {
     background-color: #2c2c2c;
 }
 
-/* Estilo del formulario */
 .login-container {
     min-height: 100vh;
     display: flex;
@@ -11,7 +9,6 @@ body {
     align-items: center;
 }
 
-/* Estilo del cuadro que contiene el formulario */
 .login-card {
     max-width: 400px;
     width: 100%;
@@ -21,14 +18,12 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-    /* Colores de texto */
-    .text-white,
+     .text-white,
     .login-card p,
     .login-card h2 {
         color: #fff;
     }
 
-    /* Enlaces */
     .login-card a {
         color: #0d6efd;
     }
